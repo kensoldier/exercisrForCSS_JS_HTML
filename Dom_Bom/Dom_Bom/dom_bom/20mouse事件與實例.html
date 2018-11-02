@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        html.body {
+        margin:0;
+        padding:0;
+        }
+        img {
+        position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="/img/DTSftZC.gif"alt="" height="50"width="50" id="img1"/>
+
+    <script>
+        //鼠標事件對象 mouseEvent(接口)  繼承自 UIEvent 繼承自 Event(對象)
+        //UIEvent 就是增加了
+        //pageX/pageY(整個頁面body區)    
+        //clientX / clientY(當前視口X / Y)
+        //offsetX/offsetY  事件原對象的X/Y 如果裡面有自原素，會重新計算，且是計算內容區域邊框可能要扣掉 
+        //screenX/screenY 包含螢幕的整個大小
+        (function () {
+            window.onload = function () {
+                document.onmousemove = function (e) {//mouseEvent
+                    e = e || window.event;
+                    //var pageX=e.pageX  ==>一邊瀏覽器  跟ie9以上都可以
+                    var pageX = e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft)
+                    var pageY = e.clientY + (document.documentElement.scrollTop || document.body.scrollTop)
+
+                    var imgD = document.getElementById('img1')
+                    imgD.style.left = pageX + 'px';
+                    imgD.style.top = pageY + 'px';
+                };
+            };
+        })()
+        
+    </script>
+</body>
+</html>

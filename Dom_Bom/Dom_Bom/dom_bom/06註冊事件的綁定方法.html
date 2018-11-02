@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        div {
+            border: 1px solid black;
+        }
+
+        .parent {
+            height: 300px;
+            width: 300px;
+            padding: 30px;
+            background-color: green;
+        }
+
+        .child {
+            height: 100px;
+            width: 100px;
+            padding: 30px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="button" value="touch me"id="btn"/>
+
+    <div class="parent">
+        father
+        <div class="child">
+            kid
+        </div>
+    </div>
+    <script>
+        //====================== addEventListener(type,listener[],Capture)事件
+        //type:事件類型
+        //listener:處理發誓
+        //Capture:莫認為false，如果是true表示要在捕獲階段執行
+
+        //優點:可以給是事件綁定兩個方法,不會覆蓋(執行順序就是註冊的順續)
+        var Obtn = document.querySelector('#btn');
+        //type網路有對照 一般是拿掉on
+        Obtn.addEventListener('click', function () {
+            alert('fuck')
+        }, false);
+
+        Obtn.addEventListener('click', function () {
+            alert('you')
+        }, false);
+
+        //控制在捕獲階段
+
+        var parentDiv = document.querySelector('.parent');
+        var childDiv = document.querySelector('.child');
+
+        parentDiv.addEventListener('click', function () { alert('parent')},true)
+        childDiv.addEventListener('click', function () { alert('child') }, true)
+        //結果會是從parent開始  因為是在捕獲階段 剛好會跟冒泡階段剛好相反
+    </script>
+</body>
+</html>

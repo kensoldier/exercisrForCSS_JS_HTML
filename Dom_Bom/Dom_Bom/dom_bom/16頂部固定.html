@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+        <script src="../scripts/documentReady.js"></script>
+    <style>
+        body, div, h1 {
+        padding:0;
+        margin:0;
+        }
+        .top-wrap {
+        height:150px;
+        background-color:antiquewhite
+        }
+        .top-logo-wrap {
+        height:90px;
+        background-color:aqua;
+        margin:5px;
+        }
+        .top-search-wrap {
+        height:50px;
+        background-color:rosybrown;
+        margin:5px;
+        }
+        h1 {
+        font-size:70px
+        }
+        .top-search-wrap-fix {
+        background-color:rosybrown;
+        height:50px;
+        position:fixed;
+        width:100%;
+        left:0;
+        top:0;
+        }
+    </style>
+    <script>
+        document.myReady(function () {
+            var OsearchBox = document.getElementById('searchBox');
+            window.onscroll = function () {
+                var scrollH = document.documentElement.scrollTop||document.body.scrollTop
+               // console.log(scrollH)
+                if (scrollH >= 95) {
+                    OsearchBox.className = "top-logo-wrap  top-search-wrap-fix";
+                }else {
+                    OsearchBox.className = "top-logo-wrap top-search-wrap";
+                }
+            };
+        })
+
+        
+    </script>
+
+</head>
+<body>
+    <div class="top-wrap">
+        <div class="top-logo-wrap">
+            logo top
+        </div>
+        <div class="top-search-wrap" id="searchBox">
+            search top
+        </div>
+    </div>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+    <h1>1</h1>
+
+
+    <h1>1</h1>
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        //把一般屬性給原型
+        function Animals(age, name) {
+            this.age = age;
+            this.name = name;
+        }
+        //把共用屬性加到機類原型
+        Animals.prototype.run = function () {
+            alert('run');
+        }
+
+
+        //=========================================================//原型繼承
+        function Animals(age, name) {
+            this.age = age;
+            this.name = name;
+        }
+        //把共用屬性加到機類原型
+        Animals.prototype.run = function () {
+            alert('run');
+        }
+
+        function Cat(age, name) {
+            this.age = age;
+            this.name = name;
+        }
+        //因為Cat的prototype 指向動物 如果不把Cat的構造函數指回Cat會無法建構
+        Cat.prototype = new Animals();
+        Cat.prototype.constructor = Cat;
+        //問題1.子類構造函數的參數無法傳給父類 2.構造函數指向 要自己改回來
+        //=========================================================//綜合繼承
+        function Animals3(age, name) {
+            this.age = age;
+            this.name = name;
+            this.food=['water','fruit']
+        }
+        //把共用屬性加到機類原型
+        Animals3.prototype.run = function () {
+            alert('run');
+        }
+
+
+
+
+    </script>
+</body>
+</html>

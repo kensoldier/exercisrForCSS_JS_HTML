@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>i&nbsp;&nbsp;&nbsp;am&nbsp;&nbsp;&nbsp;a&nbsp;&nbsp;&nbsp;boy&nbsp;</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        //每隔0.5秒讓Title的最後一個文字放到最前面
+
+        var tt=setInterval(function () {
+            //用數組的pop/unshift
+      
+            //轉成字符數組
+           var charArray = document.title.split("");
+           var lastChar = charArray.pop();
+           charArray.unshift(lastChar);
+            //把數組用""組合起來
+           var newTitle = charArray.join("");
+           document.title = newTitle;
+        }, 500)
+
+        //設定5秒後不動'
+        setTimeout(function () {
+            clearInterval(tt);
+        }, 5000)
+
+
+        //slice 方法
+        /*
+        setInterval(function(){
+        var old = document.title;
+        var lastChar = old.slice(old.length-1);
+        var brforeChar = old.slice(0,old.length-1)
+        document.title= lastChar+beforeChar
+        },500)
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <style>
+        /*偽造類*/
+        p {
+           background-color:red;
+           font-size:20px;
+        }
+        a:link {
+            color:green;
+        }
+        a:visited {
+        color:gold;
+        }
+        a:hover {
+        background-color:red
+        }
+        /*偽造元素*/
+        span:first-child {
+        color:red;
+        }
+        p:first-letter {
+        font-size:50px;
+        }
+         p::first-line {
+        color:yellow;
+                     }
+        #temp::after {
+            content:'=========='
+        }
+        #temp::before {
+            content:'----------'
+        }
+        </style>
+    <div id="temp">
+        <a href="#">news</a><br/>
+        <a href="#">product</a><br />
+        <a href="#">index</a><br />
+    </div>
+    <p>pppppp</p>
+    <h1>hhhhhhhh</h1>
+    <div>
+        <span>我是第一</span><br />
+        <span>我是第二</span><br />
+        <span>我是第三</span>
+    </div>
+   
+</body>
+</html>

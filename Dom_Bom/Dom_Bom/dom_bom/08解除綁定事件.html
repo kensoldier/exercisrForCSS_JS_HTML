@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <input type="button"value="提示" id="btnClick"/>
+    <input type="button" value="解除事件" id="removeClick" />
+
+    <script>
+        var btnClick = document.querySelector('#btnClick');
+        var btnRemove = document.querySelector('#removeClick');
+        //0級別事件
+        btnClick.onclick = function () {
+            alert('0級別事件');
+        }
+
+         //0級別事件，只要讓click為null即可
+        btnRemove.addEventListener('click', function () {
+            btnClick.onclick = null;
+        //清除2級別事件  注意事件名稱  跟函數名稱要一樣(不同打樣的匿名函數 因為地址不同)  解綁一定要用這種方式
+            btnClick.removeEventListener('click', btnClickHandle)
+
+        })
+
+        //2級別事件是無法用null去除的
+        btnClick.addEventListener('click', btnClickHandle);
+
+        function btnClickHandle(){
+            alert('2級別事件');
+        }
+        
+        //ie8 addEventListener 是不兼容得  要用 attachEvent / detachEvent
+    </script>
+</body>
+</html>

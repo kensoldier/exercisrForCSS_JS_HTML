@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+    <div id="tt">
+        1234567890
+    </div>
+    <ul id="num">
+        <li>1111</li>
+        <li>2222</li>
+        <li>3333</li>
+        <li>4444</li>
+        <li>5555</li>
+    </ul>
+
+    <script>
+        //但這種方式 只能綁定一個事件
+        var a = document.querySelector('#tt');
+        a.onclick = function () {
+            alert(this.innerHTML);
+        }
+
+        //================把所有的LI綁定事件
+
+        var liList = document.querySelectorAll('#num li');
+/*
+        liList.forEach(function (element, index) {
+            //但消耗記憶體，因為每個li所對應的函數對象都一樣，這樣會創建5次函數
+            element.onclick = function () {
+                alert(this.innerHTML);
+            }
+        })
+*/
+        liList.forEach(function (element, index) {
+            //讓事件指向外面的函數，可共用函數
+            element.onclick = liOnclickHander;
+        });
+
+        function liOnclickHander() {
+            alert(this.innerHTML);
+        }
+
+    </script>
+
+</body>
+</html>

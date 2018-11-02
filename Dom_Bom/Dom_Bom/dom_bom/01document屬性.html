@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>xxxxx</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        //可以找到當前頁面的文檔
+        console.log(window.document.URL)
+        //===================================================title
+        //title的內容
+        //通過代碼可以設定屬性
+        console.log(document.title)
+        document.title = 'ooooo';
+
+        //===================================================setInterval/setTimeOut
+        //window.setInterval()  可以傳2個參數
+        //1.要執行的代碼
+        //2.時間段
+    
+        var t=setInterval(
+            function () {
+                console.log(new Date())
+            }, 1000)
+
+        //window.setTimeOut()  可以傳2個參數，但指執行1次
+        //1.要執行的代碼
+        //2.時間段
+        //但指執行1次
+        setTimeout(function () {
+            console.log('5050')
+        }, 2000)
+
+        //暫停上面時鐘 5秒後停止
+        setTimeout(function () {
+            console.log(t);
+            clearInterval(t);//停止間段的時鐘
+        }, 5000)
+       
+    
+     </script>
+</body>
+</html>

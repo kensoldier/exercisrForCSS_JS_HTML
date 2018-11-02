@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+
+    <style>
+        div {
+        border:1px solid black;
+        }
+        .parent {
+            height:300px;
+            width:300px;
+            padding:30px;
+            background-color:green;
+        }
+        .child {
+          height:100px;
+            width:100px;
+            padding:30px;
+         background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        father
+        <div class="child">
+            kid
+        </div>
+    </div>
+
+    <script>
+        //事件會分成兩個階段 1.捕獲階段(會從window開始往下找)
+        //2.冒泡階段(找到後事件會往上冒泡,如果子跟父都有綁定事件，當仔元素觸發時,父元素都會觸發)
+
+        //給父元素綁定事件
+        var parentE = document.querySelector(".parent");
+        var childE = document.querySelector(".child");
+
+        childE.onclick = function () {
+            alert('child');
+        }
+
+        parentE.onclick = function () {
+            alert('parent');
+        }
+        //給window綁定事件 會冒泡到父容器
+        window.onclick = function () {
+            alert('window');
+        }
+
+        /*
+        冒泡階段
+        <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        window -> Document -> <html> -> <body> -> <table>..............
+        |___________|___________|___________|___________|
+        捕獲階段會往下找>>>>>>>>>>>>>>>>>>>>>>>>>>>
+       
+       */
+
+
+
+
+    </script>
+</body>
+</html>

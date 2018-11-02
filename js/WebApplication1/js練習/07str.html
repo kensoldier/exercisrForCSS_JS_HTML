@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        //==========================擷取efg
+        var aa = 'abcdef';
+        //只傳1個參數時下面3個一樣效果
+        var m = aa.slice(4,7);
+        var m2 = aa.substring(4,7);
+        var m3 = aa.substr(4, 3);
+        //==========================實現字符串的reverse
+        //method1
+        var t = '1234567';
+        var arr = t.split('');
+        arr = arr.reverse();
+        var result= arr.join("");
+       // 直接寫完 t.split('').reverse().join("");
+        console.log(result);
+        //method2
+        var res = "";
+        for (var k = t.length - 1; k >= 0; k--) {
+            res += t[k];
+        }
+        //==========================判斷出現最多的字符  並算出多少次
+        var t = 'aaasdsfdsfdsgfsfdgfdshfhdfshgdfghshdhdfhdfhsd';
+        var h = {};
+        for (var i = 0; i < t.length; i++) {
+            var charStr=t[i];
+            if (charStr in h) {
+                h[charStr] += 1;
+            } else {
+                h[charStr] = 1;
+
+            }
+        }
+
+        var max = 0, maxChar;
+        for (var k in h) {
+            if (h[k] > max) {
+                max = h[k];
+                maxChar = k;
+            }
+        }
+        console.log(max+""+maxChar)
+
+        //==========================輸入2個字符串  從第一格中刪除第二個
+        
+    </script>
+</body>
+</html>

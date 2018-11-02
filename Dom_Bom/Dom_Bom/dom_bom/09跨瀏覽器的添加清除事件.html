@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <input type="button" value="touch" id="btn" />
+    <script>
+        var btn = document.querySelector('#btn');
+        //下面所有瀏覽器都兼容
+        //btn.onclick = function () { alert('OK')}
+
+        if (btn.addEventListener) {
+            btn.addEventListener('click', clickHandle)
+        } else {
+            btn.attachEvent('onclick', clickHandle)
+        }
+        function clickHandle() { alert('xxxoooo')}
+
+
+        //一般事件處理順序  會是由0級的DOM執行 再執行2級的DOM
+        //但在IE8的attachEvent裡面 是不確定哪個先執行的BUG
+    </script>
+</body>
+</html>

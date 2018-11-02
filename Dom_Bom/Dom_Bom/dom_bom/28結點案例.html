@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../scripts/documentReady.js"></script>
+    <script src="../scripts/EventUtil.js"></script>
+</head>
+<body>
+    <ul id="menu">
+
+    </ul>
+    <ul id="menu-2">
+
+    </ul>
+    <script>
+        //一個數組放在菜單訊息，請將按鈕的菜單訊息動態生成為li標籤並添加到ul中
+        // JSON格式
+        // var data=[{name:"首頁",url:"sfs/fs",id="dasd"},{......},{.......},{.......},{............}]
+        var data = [
+            { name: "首頁", url: "sfs/fs", id: 1 },
+            { name: "產品", url: "sfs/fs", id: 2 },
+            { name: "關於", url: "sfs/fs", id: 3 },
+            { name: "案例", url: "sfs/fs", id: 4 },
+            { name: "聯繫", url: "sfs/fs", id: 5 },
+            { name: "影片", url: "sfs/fs", id: 6 }
+        ];
+        (function () {
+
+            document.myReady(function () {
+                //初始化菜單數據
+                loadmenu();
+                //初始化事件綁定
+
+                //提前做一些數據處理
+            });
+
+            //動態創li標籤
+            function loadmenu() {
+                //<li id="menu01"><a href="dsad">首頁</a></li>
+                var menu = document.getElementById('menu');
+
+                for (var i = 0, a = data.length; i < a; i++) {
+                    //創建標籤
+                    var liElement = document.createElement('li');
+                    //給標籤屬性(推薦)
+                    liElement.setAttribute('id', 'menu' + data[i].id);
+                    //不推薦
+                    /*和上面一樣效果 右麻煩
+                    var liIdAttrNode = document.createAttribute('id');
+                    liIdAttrNode.nodeValue = 'menu' + data[i].id;
+                    liElement.setAttributeNode(liIdAttrNode);
+                    */
+                    var aElement = document.createElement('a');
+                    aElement.setAttribute('href', data[i].url);
+
+                    if (aElement.textContent) {
+                        aElement.textContent = data[i].name;
+                    } else {
+                        aElement.innerText = data[i].name;//ie8以前的
+                    }
+                    menu.appendChild(liElement);
+                    liElement.appendChild(aElement);
+                }
+            };
+        })();
+
+        //==============================動態創建菜單的第2種方式 效率更高
+        //因為瀏覽器跟DOM溝通一次 跟直接寫字串 效率是差很多的
+
+
+        (function () {
+
+            var data2 = [
+        { name: "首頁2", url: "sfs/fs", id: 10 },
+        { name: "產品2", url: "sfs/fs", id: 20 },
+        { name: "關於2", url: "sfs/fs", id: 30 },
+        { name: "案例2", url: "sfs/fs", id: 40 },
+        { name: "聯繫2", url: "sfs/fs", id: 50},
+        { name: "影片2", url: "sfs/fs", id: 60 }
+            ];
+
+            document.myReady(function () {
+                loadMenuData2()
+            })
+            function loadMenuData2() {
+                var menu2 = document.getElementById('menu-2')
+                var strArray=[]
+                //使用innerHTML的方式 拼接字符串
+                for (var i = 0, a = data2.length; i < a; i++) {
+                    var str = '<li id="menu>' + data2[i].id + '">' + '<a href="' + data[i].url + '">' + data2[i].name + '</a></li>';
+                    //menu2.innerHTML += str;
+                    //不能放在裡面 會每次都要用innerHTML  效率低  var strArray=[] 外面寫
+                    strArray += str;
+                   // strArray.push(str) //用哪個都可以
+                }
+                 menu2.innerHTML = strArray;
+                //menu2.innerHTML=strArray.join("")
+            }
+
+        })()
+
+    </script>
+</body>
+</html>

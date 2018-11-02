@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../scripts/EventUtil.js"></script>
+    <script src="../scripts/documentReady.js"></script>
+    <style>
+        .msgBox {
+        width:500px;
+        height:500px;
+        border:1px solid #ff6a00;
+        position:absolute;
+        }
+        .msgCloseBox {
+        width:50px;
+        height:30px;
+        position:absolute;
+        right:5px;
+        top:5px;
+        cursor:pointer;
+        border:1px solid #ff6a00;
+        text-align:center;
+        line-height:30px         
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="msgBox" id="msgBox">
+        <div class="msgCloseBox"id="msgCloseBox">
+            x關閉
+        </div>
+    </div>
+    <script>
+        (function () {
+            document.myReady(function () {
+                var msgCloseBox = document.getElementById('msgCloseBox');
+                EventUtil.addEvent(msgCloseBox, 'click', function (e) {
+                    msgCloseBox.parentNode.style.display = "none";
+
+                })
+            })
+
+        })()
+    </script>
+</body>
+</html>

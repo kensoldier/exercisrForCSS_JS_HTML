@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script>
+        //匿名自執行函數  且函數本身是閉包 可用來模擬塊及作用域
+        (function (a) {
+            console.log(a);
+        }(8))
+        //for +閉包應用+匿名自執行函數
+        //點擊<li>的1彈出1....
+
+        //錯的
+        var lis = document.querySelectorAll('li');
+        //for (var i = 0; i < lis.length; i++) {
+        //    lis[i].onclick = function (e) {
+        //        alert(i)
+        //    }
+        //}
+        //把所有的LI都加上onclick方法循環跑完I等於5  所以當點擊時所有都是5
+        //而且在JS裡面 for是沒有閉包的 所以for裡面的i受到外面的影響
+
+        for (var i = 0, l = lis.length; i < l; i++) {
+            (function (a) {
+                lis[a].onclick = function (e) {
+                    alert(a);
+                }
+            })(i)
+        }
+        //傳參數是值的賦值 不影響函數裡面得變化
+
+        //閉包和timeOut
+        for (var i = 0; i < 10; i++) {
+            setTimeout(function () {
+                console.log(i);
+            }, 1000)
+        }
+
+
+        for (var i = 0; i < 10; i++) {
+            (function(a){
+                setTimeout(function () {
+                    console.log(a);
+                }, 1000)
+            })(i)
+        }
+
+    </script>
+</body>
+</html>

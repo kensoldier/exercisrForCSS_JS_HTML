@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../scripts/documentReady.js"></script>
+    <style>
+        #box {
+        margin-top:10px
+        }
+    </style>
+</head>
+<body>
+    <input id="txt" type="text" />
+    <div id="wrap">
+        <div id="box">
+            <input id="txt2" type="text" />
+            <input id="txt3" type="text" />
+            <input id="txt4" type="text" />
+
+        </div>
+        <input id="btn" type="button" value="sent" />
+    </div>
+        <script>
+
+        //keydown 是不區分大小寫
+        //keypress 區分大小寫
+        //keyup 
+        //keydown >> keypress >> keyup
+        //keyCode/ctrlKey/altKey/shiftKey
+        //onChange 是失去焦點時才會觸發
+            (function () {
+                document.myReady(function () {
+                    var txt = document.getElementById('txt');
+                    //keydown 可以用於所有的dom對象 比如P DIV
+                    //可用來監聽功能按鍵 比如 ctrl shift alt
+                    txt.onkeydown = function (e) {
+                        e = e || window.event;
+                        //keyCode 適用onkeydown  charCode 適用keypress
+                        console.log(e.keyCode + ';' + e.charCode)
+                    }
+                    //只能監聽 可印出的字符 功能鍵不能
+                    //區分大小寫
+                    txt.onkeypress = function (e) {
+                        e = e || window.event;
+                        //keyCode 適用onkeydown  charCode 適用keypress
+                        console.log(e.keyCode + ';' + e.charCode)
+                    }
+                    //只執行1次
+                    txt.onkeyup = function (e) {
+                        e = e || window.event;
+                        //keyCode 適用onkeydown  charCode 適用keypress
+                        console.log(e.keyCode + ';' + e.charCode)
+                    }
+
+
+                })
+            })();
+
+        (function () {
+            document.myReady(function () {
+                var box=document.getElementById('box')
+                var inputList = box.getElementsByTagName('input');
+                console.log(inputList)
+                for (var i = 0, a = inputList.length; i < a; i++) {
+                    //在事件綁定階段i變成2 所以在執行事件時如涉及i 要用字執行函數
+                    //也因為要把i傳進來看哪一個需要被觸發
+                    (function (j) {
+                        inputList[j].onkeydown = function (e) {
+                            if (this.value.length >= 3) {
+                                if (j <= 1) {
+                                    inputList[j+1].focus();
+                                } else {
+                                    //也可以用這種方式找到標籤
+
+                                    document.getElementById('wrap').getElementsByTagName('input')[j + 1].focus()
+                                    
+                                };
+                            }
+                        }
+                    })(i)
+                }
+            })
+        })()
+    </script>
+</body>
+</html>

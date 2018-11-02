@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <form>
+        <input type="text" name="txt" id="txtName" />
+        <hr />
+        <input type="button" value="提交" id="btnSub" />
+    </form>
+    <a id="link1" href="https://www.youtube.com/watch?v=r5mzkqqcklk&index=28&list=PLTaid4xsj9VRcU04kOh4gkRtmnSsCtuD3">11111111111111</a>
+    <script>
+
+        var aa = document.getElementById('link1');
+        aa.onclick = function (e) {
+            e = e || window.event;
+            if (e.preventDefault) {
+                //非ie的阻止默認行為
+                e.preventDefault();
+            } else {//ie8
+                e.returnValue = false;
+            }
+            //為了保險 return false;也可以實現默認行為
+            return false;
+        }
+
+        //====================================================return阻止事件默認
+        var btnSub = document.getElementById('txtName');
+        btnSub.onclick = function (e) {
+            //ie的兼容處理
+            e = e || window.event;
+
+            return false;//可以阻止表單提交的默認行為
+        }
+    </script>
+</body>
+</html>

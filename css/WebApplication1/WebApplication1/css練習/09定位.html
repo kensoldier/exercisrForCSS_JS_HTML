@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+<style>
+    body, div {
+    padding:0;margin:0;
+    }
+    div{
+        border:1px solid
+    }
+    .test {
+        height:500px;
+        width:300px;
+       
+    
+    }
+    .parent {
+        height:500px;
+        width:300px;
+        position:relative;
+        left:500px;
+        background-color:yellow;
+    }
+    .child {
+        height:200px;
+        width:200px;
+        background-color:red;
+        position:absolute;
+        left:5px;
+    }
+    .ab {
+    position:absolute;
+    height:200px;
+    width:200px;
+    }
+    .d1 {
+        /*中間層*/
+    z-index:100;
+    left:200px;
+    top:100px;
+    background-color:red;
+    }
+       .d2 {
+           /*最高層*/
+    z-index:200;
+       left:100px;
+    top:100px;
+    background-color:blue;
+    }
+          .d3 {
+    z-index:4;
+       left:50px;
+    top:50px;
+    background-color:aqua;
+    }
+</style>
+</head>
+<body>
+    <div class="test">123</div>
+
+    <div class="parent">
+        father
+        <div class="child">
+            childen
+        </div>
+    </div>
+
+    <div class="ab d1"></div>
+    <div class="ab d2"></div>
+    <div class="ab d3"></div>
+</body>
+</html>

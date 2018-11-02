@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        html, body, div {
+        margin:0;
+        padding:0;
+        }
+        div {
+
+        position:absolute;
+        width:100px;
+        height:100px;
+        background-color:azure;
+        border:1px solid #ccc;
+        cursor:move;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box1" style="left:100px;top:100px">
+
+    </div>
+    <script>
+        //監聽div的點擊事件  、mousedown事件  開始計算鼠標位移
+        //mouseup 觸發  移動結束
+        (function () {
+            var isMove = false;
+            var box = document.getElementById('box1');
+            var tempX = 0;
+            var tempY = 0;
+            box.onmousedown = function (e) {
+                isMove = true;
+                //儲存一開始點擊的位子
+                tempX = e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+                tempY = e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
+            };
+            box.on,onmouseup = function () {
+                isMove = false;
+            };
+            document.onmousemove = function (e) {
+                if (!isMove) {
+                    return;
+                }
+                e = e || window.event;
+                //鼠標相對於頁面得位子
+                var pageX = e.clientX+(document.documentElement.scrollLeft || document.body.scrollLeft);
+                var pageY = e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
+
+                var xH = pageX - tempX;
+                var yH = pageY - tempY;
+                //要設定style 
+                //因用在JS中 是無法透過CSS讀取DIV標籤  所以必須在DIV標籤上設定 STYLE
+                box.style.left = (parseFloat(box.style.left) + xH) + "px";
+                box.style.top = (parseFloat(box.style.top) + yH) + "px";
+                //為滑鼠下一次移動初始化位置
+                tempX = pageX;
+                tempY = pageY;
+            };
+
+        })()
+    </script>
+</body>
+</html>

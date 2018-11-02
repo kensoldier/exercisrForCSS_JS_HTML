@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        //sum遞歸
+        function sum(num) {
+            if (num <= 1) {
+                return  1;
+            }
+        return num+sum(num-1)
+        }
+        console.log(sum(30))
+        //費波納契
+        function fa(num2) {
+            if (num2 <= 2) {
+                return 1
+            }
+            return fa(num2 - 1) + fa(num2 - 2);
+        }
+        console.log(fa(8))
+        //數組的map方法
+        var t = [1, 2, 3, 4, 5, 6, 7]
+        var m = t.map(function (item) {
+            return item * 2;
+            //map裡面的函數可以接受3個值  item index array
+        })
+        
+        console.log(m)
+    </script>
+</body>
+</html>

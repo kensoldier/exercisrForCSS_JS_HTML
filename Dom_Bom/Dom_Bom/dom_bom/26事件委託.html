@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../scripts/documentReady.js"></script>
+    <script src="../scripts/EventUtil.js"></script>
+</head>
+<body>
+    <ul class="list"id="list">
+        <li>11</li><li>22</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li>
+        <li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li>
+        <li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li>
+        <li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li>
+    </ul>
+
+    <script>
+        //事件委託
+        //list中了li是不確定的 也可能動態添加  也可以動態減少 且li的量大
+        //怎麼綁定標籤
+
+        //如果用for循涵綁定事件 問題1:大量綁定訊息 消耗記憶體/cpu  問題2 如果新增加li標籤 會因為循環結束而沒有綁定到
+        /*
+        (function () {
+            document.myReady(function () {
+                var liList=document.getElementById('list').getElementsByTagName('li')
+                for (var i = 0, a = liList.length; i < a; i++) {
+                    EventUtil.addEvent(liList[i], 'click', function (e) { alert(this.innerHTML) });
+
+                }
+            })
+        })()
+        */
+        //解決方案
+        //1.事件是回冒泡的
+        //2.彈出原對象 e.target||e.srcElement
+        //3.getElementsByTagName 會返回偽數組,且會動態更新
+        //所以只要讓事件冒泡到父容器 在找target的點擊對象  把innerHTML顯示 右只給父容器只綁定一次事件
+        //子元素事件  委託  父容器 來進行註冊和處理
+
+        (function () {
+            document.myReady(function () {
+                var ulList = document.getElementById('list');
+                EventUtil.addEvent(ulList, 'click', function (e) {
+                    var target = EventUtil.getTarget(e);
+                    if (target == ulList) { return };
+                    alert(target.innerHTML);
+
+                })
+            })
+        })()
+
+
+    </script>
+</body>
+</html>

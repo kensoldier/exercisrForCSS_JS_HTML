@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        function object(o) {
+            function F(){};
+            F.prototype = o;
+            return new F();
+        }
+        //寄生繼承方法:傳一個對象到一個方法，方法內部根據傳來得對象構造一個新對象，並加以擴展，並返回
+        function createPerson(p) {
+            var o = object(p);  //同P對象構造一個O對象，並擴展方法
+            o.say = function () {
+                alert('saay')
+              
+            }
+            o.age = age;
+            return o;
+        }
+
+        var m = createPerson()
+        m.say()
+        m.age = 50;
+    </script>
+</body>
+</html>

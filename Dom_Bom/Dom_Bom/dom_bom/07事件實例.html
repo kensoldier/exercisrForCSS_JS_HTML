@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        span {
+        font-size:150px;
+        /*有一上去會變手形狀*/
+        cursor:pointer;
+        }
+        input {
+        width:300px;
+        height:300px;
+        font-size:120px;
+        line-height:120;
+        }
+    </style>
+</head>
+<body>
+    <div class="wjx-wrap">
+        <span>☆</span>
+        <span>☆</span>
+        <span>☆</span>
+        <span>☆</span>
+        <span>☆</span>
+    </div>
+
+    <div class="wjx-wrap2">
+        <span>☆</span>
+        <span>☆</span>
+        <span>☆</span>
+        <span>☆</span>
+        <span>☆</span>
+    </div>
+
+    <input type="button" value="ADD"id="btn" />
+    <ul class="list">
+       
+
+    </ul>
+
+    <script>
+        addEventListener
+    //==============================================================點擊之後星星會變黑
+        var starSpan = document.querySelectorAll('.wjx-wrap span');
+   
+    //給所有的5角星綁定事件
+        starSpan.forEach(function (elemment, index) {
+            elemment.addEventListener('click', function () {
+                //所有改成白色
+                starSpan.forEach(function (star, index) {
+                    star.innerHTML = '☆';
+                })
+                //被點擊改成黑色
+                elemment.innerHTML = '★';
+            })
+        })
+        //但上面的方法一樣消耗內存,因為函數被宣告了5次,也是要獨立出來
+        var starSpan2 = document.querySelectorAll('.wjx-wrap2 span');
+        starSpan2.forEach(function (element, index) {
+            element.addEventListener('click', starSpanHandle)
+        })
+
+
+        function starSpanHandle() {
+            starSpan2.forEach(function (star, index) {
+                star.innerHTML = '☆';
+            })
+            //獨立出來element無法讀取
+            //elemment.innerHTML = '★';
+            //要改成當前的元素
+            this.innerHTML = '★';
+        };
+        //======================================================自動添加li
+        var btnAdd = document.querySelector('#btn');  //ie8 開始
+        var index = 1;
+        btnAdd.addEventListener('click', function () {
+            var list = document.querySelector('.list');
+            list.innerHTML += "<li>" + index + "</li>";
+            index++;
+
+
+
+
+        });//ie9開始
+
+
+    </script>
+</body>
+</html>

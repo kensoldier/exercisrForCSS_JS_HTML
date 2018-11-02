@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+       
+        .btn1 {
+       position:relative;
+       padding:0;
+       margin:0 auto;
+       width:200px;
+       height:30px;
+       line-height:30px;
+       text-align:center;
+       border-radius:4px;
+       border:1px solid ;
+       background-color:red; 
+        }
+            .btn1::before {
+            content:"";
+            position:absolute;
+            display:block;
+            /*width:10px;
+            height:10px;*/
+            border:5px solid green;
+            border-color:transparent transparent green;
+            top:-10px;
+            left:20px;
+            }
+
+     
+        .btn2 {
+       position:relative;
+       padding:0;
+       margin:0 auto;
+       width:200px;
+       height:30px;
+       line-height:30px;
+       text-align:center;
+       border-radius:4px;
+       border:1px solid ;
+        
+        }
+            .btn2::before {
+            content:"";
+            position:absolute;
+            display:block;
+            /*width:10px;
+            height:10px;*/
+            border:5px solid green;
+            border-color:transparent transparent green;
+            top:-10px;
+            left:20px;
+            }
+             .btn2::after {
+            content:"";
+            position:absolute;
+            display:block;
+            /*width:10px;
+            height:10px;*/
+            border:5px solid green;
+            border-color:transparent transparent white;
+            top:-8px;
+            left:20px;
+            }
+
+    </style>
+</head>
+<body>
+
+    <div class="btn1">bubble buttom</div>
+    <hr />
+    <div class="btn2">
+
+    </div>
+</body>
+</html>

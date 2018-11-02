@@ -1,0 +1,345 @@
+﻿@charset "utf8";
+
+/*佈局的CSS*/
+/*頭部大佈局*/
+body {
+    color: #666;
+    font-size: 12px;
+}
+
+a {
+    color: #666;
+}
+
+.h-header .top-nav {
+    margin: 0 auto;
+    height: 54px;
+    width: 1190px;
+    padding-top: 18px;
+    /*border:1px solid;*/
+  
+}
+    /*logo區域*/
+    .h-header .top-nav .logo {
+        float: left;
+    }
+
+.top-nav .logo h1 {
+    position: absolute;
+    text-indent: -999999px;
+}
+/*使用者區域*/
+.h-header .top-nav .user-nav {
+    float: right;
+}
+/*搜索區域*/
+.h-header .top-nav .search {
+    margin: 0 265px 0 300px;
+    padding-top: 10px;
+    line-height: 30px;
+    position: relative;
+}
+
+.h-header .search .course-sel {
+    position: relative;
+    display: inline-block;
+    width: 66px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+.h-header .search input {
+    display: inline-block;
+    width: 400px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 1em;
+    border: 1px solid #e0e0e0;
+}
+
+.search .course-sel, .search input {
+    float: left;
+}
+
+.h-header .search .icon-search {
+    position: absolute;
+    left: 450px;
+    top: 11px;
+    background: url(../img/放大鏡.jpg) no-repeat;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+/*下拉三角形*/
+.h-header .search .icon-tri {
+    float: right;
+    margin: 13px 8px;
+}
+/*彈出課程選擇*/
+.h-header .course-menu {
+    position: absolute;
+    top: 30px;
+    left: -1px;
+    display: none;
+    background-color:white;
+}
+
+    .h-header .course-menu li {
+        border: 1px solid #e0e0e0;
+        width: 66px;
+    }
+
+.h-header .course-sel:hover .course-menu {
+    display: block;
+}
+
+.h-header .course-menu li:hover {
+    background-color: #ccc;
+}
+/*用會導航區*/
+.h-header .user-nav {
+    padding-top: 5px;
+}
+
+    .h-header .user-nav .user-nav-item {
+/*如果不用子類選擇 float 會影響 所有的li*/
+        float: left;
+        height: 42px;
+        line-height: 42px;
+        margin: 0 11px 0 14px;
+    }
+    /*頭像*/
+    .h-header .user-nav .avatar {
+        width: 42px;
+        height: 40px;
+        border-radius: 50%;
+    }
+    .h-header .user-nav .userName {
+    /*百DIV紹定為行內  才不會換行*/
+        display:inline-block;
+    }
+    .h-header .user-nav .user {
+    position:relative;
+    }
+    .h-header .user-nav .user-menu-cover {
+    position:absolute;
+    left:0;
+    top:45px;
+    display:none;
+    background-color:white;
+    z-index:50
+    }
+   .h-header .user-nav .user:hover .user-menu-cover {
+    display:block;
+    
+    }
+.user-nav .user-menu-cover li {
+    display:block;
+    border:1px solid #ccc;
+    width:100px;
+    height:40px;
+    text-align:center;
+}
+.user-nav .user-menu-cover li:hover {
+    background-color:#cecece;
+}
+    .h-header .user-nav .ms-wrap{
+        position:relative;
+        top:4px;
+        width:40px;
+        height:40px;
+        background:url(../img/對話框.jpg) left top no-repeat;
+    }
+        .h-header .user-nav .msg{
+        position:relative;
+        top:-13px;
+        left:20px;
+        display:inline-block;
+        width:30px;
+        height:30px;
+        line-height:24px;
+        padding-left:8px;
+        background:url(../img/circle.png) left top no-repeat;
+    }
+    .h-header .user-nav .msg-num {
+    color:#fff;
+    
+    }
+   
+    .h-header .user-nav i.icon {
+    display:inline-block;
+    margin: 10px 0 0 7px;
+    }
+ /*==========================================================================*/
+/*主導行區域*/
+.site-nav {
+background-color:#3595bd;
+}
+.site-nav-wrap {
+    margin: 0 auto;
+    height: 60px;
+    width: 1190px;
+    /*border:1px solid*/
+}
+.site-nav li, .site-nav a {
+color:#fff;
+font-size:16px;
+}
+/*設置右側背景的紅色DIV*/
+.site-nav .bg-red-wrap {
+    margin-left:1190px;
+    position:relative;
+}
+.site-nav .bg-red-wrap .bg-red{
+/*父盒子相對定位 且沒設高度,子盒子絕對定位 且有高度，會高度塌陷 不占控間*/
+ position:absolute;
+ right:0;
+ top:0;
+ width:50%;
+ height:60px;
+ background-color:indianred;
+    }
+/*左側*/
+   .site-nav .main-nav {
+    float:left;
+    height: 60px;
+    line-height: 60px;
+    }
+    .site-nav .main-nav .menu-item{
+    float:left;
+    margin-right:11px;
+    }
+    .site-nav .menu-item a{
+    display:inline-block;
+    height:32px;
+    line-height:32px;
+    padding:0 22px;
+    border-radius:3px;
+    }
+     .site-nav .menu-item  a.cur {
+        background-color:#666;
+        }
+          .site-nav .menu-item  a:hover {
+        background-color:#666;
+        }
+
+/*右側*/
+     .site-nav .nav-aside {
+    float:right;
+    padding-right:20px;
+    
+    background-color:indianred;
+    }
+       .site-nav .nav-aside-item {
+    float:left;
+    height: 60px;
+    line-height: 60px;
+    margin-left:20px;
+    }
+  .site-nav .nav-aside-item a{
+    display:inline-block;
+    height:32px;
+    line-height:32px;
+    padding:0 22px;
+    border-radius:3px;
+    }
+   .site-nav .nav-aside-item a:hover {
+   background-color:#666;
+    }
+ /*===========================================================================*/
+ /*banner*/
+
+.h-banner {
+   overflow:hidden;
+    width:100%;
+    position:relative;
+}
+.h-banner .banner-img{
+    overflow:hidden;
+    width:100%;
+    height:400px;
+
+}
+.h-banner .slide-bar {
+
+    width:90px;
+    height:14px;
+
+    position:absolute;
+    left:50%;
+    margin-left:-45px;
+    top:376px;
+  
+    }
+    .h-banner .slide-bar .slide-btn {
+    float:left;
+    }
+      .h-banner .slide-btn a {
+    display:inline-block;
+    margin-right:15px;
+    width:14px;
+    height:14px;
+    background-color:white;
+    }
+
+    .h-banner .slide-btn a.cur-banner , .h-banner .slide-btn a:hover {
+        background-color:red;
+        
+        
+        }
+/*===========================================================*/
+/*產品列表*/
+.h-main .course-list {
+    margin:0 auto;
+    width:1190px;
+    /*border:1px solid;*/
+    padding-top:40px;
+}
+.p-module .p-module-head {
+    font-size:22px;
+    /*line-height:55px;*/
+    height:22px;
+}
+.p-module .p-module-head .p-module-title {
+float:left;
+padding-left:18px;
+height:22px;
+line-height:22px;
+border-left:7px solid #3595bd;
+
+}
+.p-module .p-module-head .p-module-more{
+    float:right;
+    line-height:22px;
+    font:12px;
+    color:brown;
+}
+/*如果clearfix沒辦法觸發父容器的BFC時，可以overflwo:hidden;*/
+.p-module .p-module-body {
+overflow:hidden;
+}
+.p-module .p-module-body .p-list-item {
+padding-top:30px;
+margin:0 14px;
+font-size:28px;
+color:#666;
+float:left;
+}
+
+
+.p-module .p-list-item img {
+width:207px;
+height:180px;
+border:1px solid #e1e1e1;
+}
+/*===========================================================*/
+/*底部*/
+.h-footer {
+background:#373a43;
+height:141px;
+text-align:center;
+padding-top:44px;
+font-size:16px;
+}

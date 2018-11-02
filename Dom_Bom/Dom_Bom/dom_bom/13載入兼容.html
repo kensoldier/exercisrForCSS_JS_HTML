@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script>
+        //只有window &  img 有 onload事件  全部加載完成會觸發
+        //有window.onload <script>要放哪都可以
+        window.onload = function () {
+            //.............................
+ 
+        }
+        //缺點:可能很慢 有時候頁面不用等所有加載完在開始運作 例如圖片很大時 不用等圖加載完 在運行
+        //要優化 用  window.DOMContentLoaded 但ie8不支持
+        //ie要用 document的onreadystatechange 去看ready.state =>loading/interactive(可以互動)/complete
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var Obtn = document.getElementById('btn');
+            Obtn.addEventListener('click', function () {
+                alert('OK')
+            }, false)
+        }, false)
+        //DOMContentLoaded 會在 window.onload前面執行 因為DOMContentLoaded是文件加載完 就開始執行
+        //但window.load是要等所有東西加載完
+
+        //ie8
+        document.onreadystatechange = function (e) {
+            if (document.readyState == 'complete') {
+                var Obtn2 = document.getElementById('btn2');
+                Obtn2.onclick = function () {
+                    alert('ok2');
+                }
+            }
+        }
+        //但這樣都可以在優化
+
+        //利用 callback函數 傳入裡面去執行
+        /*
+         * jquery實現文檔加載程序處理
+         * @callback function 頁面加載完執行回掉函數       
+        */
+        document.myReady = function (callback) {
+            if (document.addEventListener) {
+                document.addEventListener('DOMContentLoaded', callback, false);
+            } else if (document.attachEvent) {    //兼容IE8以下的瀏覽
+                document.attachEvent('onreadystatechange', function () {
+                    if (document.readyState == 'interactive') {
+                        callback(window.event);
+                    }
+                })
+            } else {//其他特殊情況
+                window.onload = callback;
+            }
+        }
+
+        //寫一個方法 接受一個函數參數 裡面可以註冊事件
+        document.myReady(function (e) {
+            var Obtn3 = document.getElementById('btn3');
+            Obtn3.onclick = function () {
+                alert('OK');
+            }
+        });
+
+        //onunload  onbeforeload
+    </script>
+</head>
+<body>
+    <input type="button" value="touch me" id="btn"/>
+    <input type="button" value="touch me2" id="btn2" />
+    <input type="button" value="touch me3" id="btn3" />
+</body>
+</html>

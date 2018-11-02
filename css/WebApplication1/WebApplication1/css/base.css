@@ -1,0 +1,43 @@
+﻿@charset "utd-8";
+.triangle-down {
+    border:5px solid #666;
+    border-style: solid dashed dashed;
+    border-color:#666 transparent transparent;
+    width:0;
+    height:0;
+}
+/*到三角*/
+.triangle-up-s {
+    position:relative;
+}
+.triangle-up-s:before, .triangle-up-s:after{
+ /*一定要給不然部會顯示*/
+    content:" ";
+    border:5px solid #ccc;
+    border-style:dashed dashed solid;
+    border-color:transparent transparent #ccc;
+     width:0;
+    height:0;
+    position:absolute;
+    left:50%;
+    top:-10px;
+}
+    .triangle-up-s:after {
+    border-color:transparent transparent #fff;
+    top:-8px;
+    
+    
+    }
+
+
+.clearfix:before, clearfix:after {
+    content:" ";
+    display:table;
+}
+/*閉合浮動*/
+.clearfix:after {
+clear:both;
+height:0;
+line-height:0;
+visibility:hidden;
+}

@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <ul id="list">
+        <li>1</li>
+        <li id="li2">2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script>
+        //標籤是一個節點  屬性也是一個節點      <a href="#">11</a>  a是一個節點  href 也是一個屬性節點  11 也是文檔節點
+        //結點與結點 構成document數 有 兄弟 父子 關係
+
+        /*
+                                    
+                                                |---[Document]--[HTMLDocument]--[document]
+                                                |
+                                                |
+                                                |---[Element]--[HTMLElement]--[HTMLDivElement]    ................關於標籤的元素事件
+                                                |
+                                                |
+  [Object]----[EventTarget]-------[Node]--------|--[DocumentFrament]--[cteateDocumentFragment方法]   .............緩存提高效率用
+               包含封裝                         |
+                   |                            |                                   |--[createTextNode方法]
+               removeEventListener              |                    |---[Text]-----|                          ...文本結點
+               addEventListener                 |---[CharacterDate]--|              |--[createCDTASection方法]
+               事件相關東西                     |                    |
+                                                |                    |---[Comment]--------[createComment方法]  ...註釋的結點
+                                                |
+                                                |
+                                                |---[DocumemtType]--[document.doctype方法]   .....................文檔類型結點
+                                                |
+                                                |
+                                                |---[Attr]--[createAttribute方法]   ..............................屬性結點
+ 
+ 
+        1.Node接口試對結點的方裝，繼承自EventTarget，也就是所有Node結點對象都可以綁定事件 
+        2.Node長用屬性:
+                       *nodetype:標籤=1;屬性=2;文本=3;註釋=8;文檔=9。
+                       *nodeName:標籤:標籤名;屬性:屬性名;文本:#text;文檔:#document。
+                       *nodeValue:文本結點返回文本值、屬性結點返回屬性值、註釋結點返回註釋內容、其他結柢返回null。
+                       *textContent:屬性表示一個結點及其後代的文本內容。
+                       *innerText:是表示一個節點及其後代的"渲染"文本內容的屬性。
+
+        3.結點的關係:
+                    *Node.childNodes:返回自結點 ，並會自動更新
+                    *Node.firstChild:返回第一個子結點OR null
+                    *Node.lastChild:
+                    *Node.nextSibling:下一個兄弟結點
+                    *Node.previousSibling:上一個兄弟結點
+                    *Node.parentNode: 返回父結點
+                    *Node.parentElement:返回父結點的標籤
+        4.Node接口方法
+                    *Node.appendChild(child):添加子結點。//不能貼加屬性結點
+                    *Node.insertBefore(newElement,referenceElement):  在referenceElement前 插入 newElement
+                    *Node.removeChild(c)    list.removeChild(li2) 就可以刪除
+                    *Node.replace(new,old)
+                    *Node.hasChildNodes()  true\false
+                    *Node.cloneNode(deep)  拷貝結點  deep=true  /deep=false 默認只會複製標籤 沒內容
+                    *NOde.contains(c)   是不是包含誰 c id
+ */
+       
+        var list = document.getElementById('list');
+        console.log(list.nodeName)
+        console.log(list.nodeValue)
+        console.log(list.nodeType)
+        console.log(list.innerText)//差別在CSS 如果設定隱藏會是空的  
+        console.log(list.textContent)//ie9 //不受CSS影響
+
+        var li2 = document.getElementById('li2')
+        console.log(li2.parentNode)
+        console.log(list.childNodes)//臉面會有text因為<li>有換行  如果用previousSibling/nextSibling 會找到文本結點 text
+
+    </script>
+</body>
+</html>

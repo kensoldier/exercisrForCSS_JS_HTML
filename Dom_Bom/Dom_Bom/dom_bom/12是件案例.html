@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <form action="https://www.youtube.com/watch?v=z50qXDub4M0&list=PLTaid4xsj9VRcU04kOh4gkRtmnSsCtuD3&index=31">
+       用戶名 <input type="text" id="txt2" />
+        <hr />
+        <input type="submit" id="btn" value="submit" />
+    </form>
+
+
+
+    <input type="text" id="txt" />
+    <script>
+        //===================================鍵盤只能輸入數字
+        var txt = document.getElementById('txt');
+        txt.onkeypress = function (e) {
+            e = e || window.event;
+            //keyCode 0:48 9:57
+
+            if (e.keyCode < 48 || e.keyCode > 57) {
+                return false;
+            }
+            //其實在input裡 type="number"  這是瀏覽器實現的  ie要9以上
+        }
+        //==================================瀏覽器在離開頁面時 提醒用戶是否要離開
+
+        //提醒用戶是否要離開當前頁面網站 會跳出詢問
+        window.onbeforeunload = function () {
+            return '你是否要離開?';
+        }
+
+        //==================================表單點擊提交用戶名不能為空
+        var btn = document.getElementById('btn');
+        var txt2 = document.getElementById('txt2');
+        /*dom 0級
+        btn.onclick = function (e) {
+
+            //dom0級取消事件 取消默認 return false
+            //判斷用戶名文本是否為空
+            if (!txt2.value) {
+                alert('用戶名不為空')
+                return false;//只能在dom 0級使用
+              
+            }
+        }
+        */
+        //dom 2級
+        //先判斷是否有addEventListener  因為IE8
+        if (btn.addEventListener) {
+            btn.addEventListener('click', btnHandle, false)
+        } else {
+            //ie8添加事件方式
+            btn.attachEvent('onclick', btnHandle);
+        }
+
+        function btnHandle(e) {
+            //ie8 事件處理
+            e = e || window.event;
+            if (!txt2.value) {
+                //取消默認操作
+                alert('用戶不能為空')
+                if (e.preventDefault) {
+
+                    e.preventDefault();//標準 不能用return false  因為dom 2級
+                } else {
+                    //ie8取消事件方式
+                    e.returnValue = false;//ie9
+                }
+            }
+
+        }
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+//===================================================================================01數組反敘(不用reverse)
+        var t = [90, 9, 34, 2, 39, 87, 22, 10]
+
+        //t.reverse()
+//==================================================method1
+        //var rr = [];
+        //for (var i = 0,c=t.length; i <c ; i++) {           
+        //    rr.push(t.pop());
+        //}
+//==================================================method2
+        var rr = [];
+        for (var i=0,c=t.length; i < c;i++){
+            rr[t.length - i - 1] = t[i];
+        }
+
+        console.log(rr);
+//==================================================================================02去掉數組當中的重複數字
+        var t = [90, 9, 34,9, 2,9, 39, 87, 22, 10]
+        
+//==================================================method1(indexOf  -1 0 1  ie8不兼容)
+//        var rr = [];
+//        rr.push(t[0]);
+//        for (var i = 1; i < t.length; i++) {
+//            if(rr.indexOf(t[i])==-1){
+//                rr.push(t[i]);
+//            }
+//        }
+//        console.log(rr);
+//=================================================method2(新數組判斷)
+        var rr = [];
+        rr.push(t[0]);
+        for (var i = 0; i < t.length; i++) {
+            for (var k = 0; k < rr.length;k++){
+                if (t[i] === rr[k]) {
+                    break;
+                }
+            }
+            if(k===rr.length){
+                rr.push(t[i]);
+            }
+        }
+        console.log(rr);
+ //=================================================method(利用物件屬性特性)
+        var h = {};
+        for (var k in t) {
+            var str=t[k].toString();//利用物件同樣屬性 的屬性執會覆蓋的效果
+            h[str]=t[k]             //讓該屬性賦值
+        }
+        var rr = [];
+        for (var m in h) {
+            rr.push(h[m])
+        }
+            //==================================================================================03求數組中的最小值及他的index
+        var t = [90, 9, 34, 9, 2, 9, 39, 87, 22, 10]
+        var min=t[0],minIndex=0;
+        
+        for (var i = 1; i < t.length;i++){
+            if (t[i] < min) {
+                min = t[i];
+                minIndex = i;
+        }
+
+        }
+        console.log(min);
+
+
+    </script>
+</body>
+</html>

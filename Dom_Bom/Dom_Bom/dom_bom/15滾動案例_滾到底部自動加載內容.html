@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+   <script src="../scripts/documentReady.js"></script>
+    
+     <script>
+        //先簡單寫一個方法,也可以用前面兼容得方法OR Jquery
+         document.myReady(function () {
+
+             window.onscroll = function () {
+                 //首先拿到滾動距離
+                 var scrollH = document.documentElement.scrollTop || document.body.scrollTop;
+                 //整個網頁高度
+                 var pageH = document.body.clientHeight;
+                 //視口高度
+                 var viewPortH = document.documentElement.clientHeight;
+                 //頁面高度 - 視口高度 - 滾動高度=剩餘的高度
+                 var bottomH = pageH - viewPortH - scrollH;
+                 if (bottomH < 50) {
+                     //模擬加內容
+                     var list = document.getElementById('list')
+                     var temp = "";
+                     //一次加在10個
+                     for (var i = 0; i < 10; i++) {
+                         temp+='<li>'+new Date()+'</li>'
+                     }
+                     list.innerHTML += temp;
+                 }
+             }
+         })
+    </script>
+</head>
+<body>
+    <ul id="list"style="font-size:80px">
+       <li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li>
+        <li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li>
+        <li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li>
+        <li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li><li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+     
+    </ul>
+</body>
+</html>

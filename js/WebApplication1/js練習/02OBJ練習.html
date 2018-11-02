@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        var cat={
+            color:'red',
+            weight:20,
+            name: 'kimi',
+            ID: 1234,
+            run: function () {
+                console.log(this.name+'run')
+            }
+        }
+        for (var k in cat) {
+            console.log(k);
+        }
+
+        //函數分裝與OBJ=============================================
+        Math_test = {
+            PI: 3.14159,
+            sum: function (n) {
+                var result=0;
+                for (var i = 0; i <= n; i++) {
+                    result += i;
+                }
+                return result;
+            },
+            factorial: function (n) {
+                var result = 1;
+                for (var i = 1; i <= n;i++){
+                    result *= i;
+                }
+                return result;
+            }
+        }
+        console.log(Math_test.PI);
+        console.log(Math_test.sum(20));
+        console.log(Math_test.factorial(10));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        html,body, div, input, ul, li {
+        margin:0;
+        padding:0;
+        }
+        .search-box-wrap {
+        margin:0 auto;
+        height:400px;
+        width:300px;
+        padding-top:30px;
+        /*text-align:center*/
+        position:relative;
+        }
+        ul {
+        list-style:none;
+        }
+        .search-box-wrap .list {
+         border:1px solid #ddd;
+         width:188px;
+         padding:5px;
+         display:none;
+         position:absolute;
+        }
+        .search-box-wrap .txt-search {
+       /*因為本來就有2pxborder*/
+        width:186px;
+        padding-left:10px;
+        height:25px;
+        line-height:25px;
+        }
+
+        .search-box-wrap .list li {
+        height:25px;
+        line-height:25px;
+        
+        }
+
+        .search-box-wrap .list li:hover {
+        background-color:#ccc;
+        cursor:pointer;    
+            }
+    </style>
+</head>
+<body>
+    <div class="search-box-wrap">
+        <input type="text" id="txt" class="txt-search" />
+        <ul class="list" id="listTip">
+            <li>1111</li>
+            <li>2222</li>
+            <li>3333</li>
+            <li>4444</li>
+            <li>5555</li>
+        </ul>
+    </div>
+
+    <script>
+        //當文本框會得焦點 顯示提示  失去焦點  關閉文本框
+        //模擬況級作用域
+        (function () {
+            window.onload = function () { 
+                var txtSearch = document.getElementById('txt');
+                var tipList = document.getElementById('listTip');
+                //因為只是要找tipList 下的 li 標籤  所以不用搜索全部文檔 document
+                var liList = tipList.getElementsByTagName('li');
+                txtSearch.onfocus = function () {
+                    tipList.style.display = "block";
+                    //彈出提示框  不能影響  原來的 layout  style (要加絕對定位 然後不設定位子 他會在他原本出現的地方 父容器relative)
+
+                }
+                txtSearch.onblur = function () {
+                    tipList.style.display = "none";
+                }
+                //onblur  和click 事件會有衝突  假設我點擊li要讓 input得到值 但因為點擊li時 會失去焦點  然後 li被剔除  根本得不到值
+                //給所有li綁定點擊事件
+                for (var i = 0; i < liList.length; i++) {
+                    //綁定onclick不會執行 1.失去焦點 2.onclick  3.沒東西  所以要改事件(有先人會讓onblur延遲)
+                    //onclick  是發生在 mousedome/mouseup之後 mousedome(會讓當前元素獲得焦點,原有焦點元素會失去焦點)>>mouseup>>onclick
+                    //mousedome>> blur >> mouseup >> click
+                    //liList[i].onclick = tipLiHandle;
+                    liList[i].onmousedown = tipLiHandle;
+
+                };
+                function tipLiHandle() {
+                    var txt = this.innerHTML;
+                    txtSearch.value = txt;
+                }
+
+            }
+        })()
+     
+    </script>
+</body>
+</html>

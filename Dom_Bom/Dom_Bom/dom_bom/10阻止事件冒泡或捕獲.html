@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        div {
+        width:200px;
+        height:200px;
+        border:1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <input type="button" value="touch" id="btn"/>
+    </div>
+   
+    <script>
+        var btn = document.querySelector('#btn');
+        var div1 = document.querySelector('.parent');
+        
+        div1.onclick = function () {
+            alert('DIV');
+        }
+
+
+        btn.onclick = function (e) {
+            //e標準瀏覽器e就是我們的事件對象 
+            //
+            alert('btn');
+
+            e = e || window.event;
+            //判斷事件發生是是否在window  下為非IE(事件對象)/IE8(事件對象)
+            if (e.target === this || e.srcElement === this) {
+                //取消冒泡
+                if (e.stopPropagation) {
+                    //可以阻止事件冒泡也可以阻止事件捕獲
+                    e.stopPropagation();
+                } else {
+                    e.cancelBubble = false;
+                }
+
+            }
+
+        }
+
+    </script>
+</body>
+</html>

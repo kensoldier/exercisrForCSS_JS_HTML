@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+
+</head>
+<body>
+    <input type="text" id="txt1"/>
+    <input type="text" id="txt2" style="border-color:blue"/>
+    <input type="button" id="btnTxt" value="ok"/>
+
+
+    <script>
+        //點時候獲得 focus
+        //失去焦點   blur
+        //上面兩的不會進行事件冒泡
+        //focusin/focusout 對應上面兩的事件 但會冒泡
+        window.onload = function () {
+            var txt1 = document.getElementById('txt1');
+            var txt2 = document.getElementById('txt2');
+            var btnTxt = document.getElementById('btnTxt');
+
+            txt1.onfocus = function () {
+                console.log('獲得焦點');
+            };
+
+            txt1.onblur = function () {
+                console.log('失去焦點');
+            };
+
+            btnTxt.onclick = function () {
+                txt2.focus();
+            }
+            txt2.onblur = function () {
+                if (txt2.value == "") {
+                    //離不開焦點
+                    txt2.focus();
+                    //文本框變紅色
+                    //js中-要去掉
+                    txt2.style.borderColor = 'red';
+                } else {
+                    txt2.style.borderColor = 'blue';
+                }
+
+            }
+        }
+    </script>
+</body>
+</html>

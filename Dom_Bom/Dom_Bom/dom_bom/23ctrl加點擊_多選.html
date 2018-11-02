@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        .pBox p{
+        cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="pBox"id="pBox">
+        <p>111</p>
+        <p>111</p>
+        <p>111</p>
+        <p>111</p>
+        <p>111</p>
+    </div>
+
+    <script>
+        (function () {
+            window.onload = function () {
+                var pBox = document.getElementById('pBox');
+                var listP = document.getElementsByTagName('p');
+                for (var i = 0, a = listP.length; i < a; i++) {
+                    listP[i].onclick = pClickHandler;
+                }
+            };
+
+            function pClickHandler(e){
+                e = e || window.event;
+                if (e.ctrlKey) {
+                    this.style.backgroundColor = "silver";
+                    console.log('ada')
+                } else {
+                    var pBox = document.getElementById('pBox');
+                    var listP = document.getElementsByTagName('p');
+                    for (var i = 0, aa = listP.length; i < aa; i++) {
+                        listP[i].style.backgroundColor = "#fff";
+                    }
+                    this.style.backgroundColor = "silver";
+                }
+
+            }
+        })()
+        
+
+    </script>
+</body>
+</html>

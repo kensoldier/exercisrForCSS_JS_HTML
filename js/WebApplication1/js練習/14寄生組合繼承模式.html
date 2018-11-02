@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        function Animal(age, name) {
+            this.age = age;
+            this.name = name;
+            this.foods=['xx','oo'];
+        }
+        Animal.prototype.run = function () {
+            alert('run........')
+        }
+
+        function Cat(age, name) {
+            Animal.call(this, age, name);
+        }
+        Cat.prototype=inheritFrom(Animal.prototype)
+
+        var c1 = new Cat(19, 'gg'); 
+        var c2 = new Cat(18, 'ff');
+       
+
+
+    function inheritFrom(o) {
+        //var t= Object.create(o)
+        var t = object(o);
+        t.constructor = Cat;
+        return t
+    }
+
+    function object(o) {
+        function F() { };
+        F.prototype = o;
+        return new F();
+    }
+    </script>
+
+</body>
+</html>

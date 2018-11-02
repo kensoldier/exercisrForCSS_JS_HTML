@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <!--ie8不支持-->
+    <input type="text" placeholder="ken" />
+    <!--實現ie8之前-->
+    <input type="text" id="txt2"value="ken" />
+    <script>
+        window.onload = function () {
+            var txt2 = document.getElementById('txt2')
+            txt2.style.color='#ccc';
+            txt2.onfocus = function () {
+                if (txt2.value == "ken") {
+                    txt2.value = "";
+                    txt2.style.color = '#000';
+                };
+            };
+            txt2.onblur = function () {
+                if (txt2.value == "") {
+                    txt2.value = "ken";
+                    txt2.style.color = '#ccc';
+                }
+
+            };
+
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+
+    <p>1</p>
+    <p name="p1"class="p11">2</p>
+    <p name="p2">3</p>
+    <p name="p3">4</p>
+    <h1>我是小波</h1>
+    <div class="tem1" name="div01">混淆</div>
+    <div class="tem2">混淆2</div>
+    <div class="tem3"id="tem33">混淆3</div>
+
+    <script>
+
+        //=========================================================getElementsByTagName
+
+        //就由Tag name  拿到一是個偽數組(HTMLCollection集合對象,會自動更新變動 有1. item方法[]、2.nameItem[]找到標籤)
+        //要轉成真數組 Array.prototype.slice.call(arr)會返回真數組
+
+        var arr= document.getElementsByTagName('p')  
+        console.log(arr);
+        for (var i = 0; i < arr.length; i++) {
+            console.log(arr[i].innerHTML);
+        }
+        //會返回所有的標籤
+        var arr2 = document.getElementsByTagName('*')
+        console.log(arr2);
+        //=========================================================querySelector(selectors)
+        //IE8以上的瀏覽器
+        //返回符合條件的  第一個元素  ,是Element對象
+        //可接受一個 CSS的選擇器字符串作為參數  去搜索頁面  很強大
+
+        var element1 = document.querySelector(".tem2");
+        var element2 = document.querySelector("#tem33");
+        var element3 = document.querySelector("p");
+        console.log(element1);
+        console.log(element2);
+        console.log(element3);
+        //=========================================================querySelectorAll(selectors)
+        //和上面一樣 差別在會返回所有符合條件的元素
+        //下面的數組是不會自動更新的
+        //下面是一個NodeList接口的實力 NodeList(對象節點的集合)的原型是Object.protptype,所以有方法可以用
+        var element4 = document.querySelectorAll("p.p11");
+        var element5 = document.querySelectorAll("p");
+        console.log(element4);
+        console.log(element5);
+        
+       
+        //forEach接受一個函數進行對數組中的元素進行處理
+        var aaa = Array.prototype.slice.call(element5)
+        //其實直接用element5也可以 因為它是一個偽數組
+        aaa.forEach(function (elem, index) {
+            console.log(index + ':' + elem.innerHTML)
+        });
+       
+        
+    
+     </script>
+</body>
+</html>

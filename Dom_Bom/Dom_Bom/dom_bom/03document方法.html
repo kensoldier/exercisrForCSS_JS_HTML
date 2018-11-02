@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <p id="p1" class="2" ken="po"><span>段落1</span></p>
+    <p id="p2">段落2</p>
+    <p id="p3">段落3</p>
+
+    <script>
+        //document.getElementById  找到HTML節點
+        var elementP = document.getElementById('p1');
+        elementP.onclick = function () { alert(111) };
+
+        
+        /*
+        elementP是obj 它的內部原型是>>elementP >> HTMLParaphElement(段落標籤原型) >> HTMLElement(所有標籤的基類接口) >>
+        Element() >> Node >> EventTarget >> object  >> null
+        
+        //接口:有自己規定的方法、屬性，單要子類去實現 Element 、Node都是接口
+        //類型:可以直接創建實例  比如Number類型
+    
+        */
+        
+        //常用屬性方法
+        console.log(elementP.attributes);
+        console.log(elementP.attributes[0]);
+        //得到class的值
+        console.log(elementP.getAttribute('class'));
+        //body 裡面的ken 屬性被改變了
+        elementP.setAttribute("ken", "123");
+        //得到內容
+        console.log(elementP.innerHTML);
+        console.log(elementP.innerText);
+        //拿到該標籤名
+        console.log(elementP.tagName);
+        //刪除屬性
+        //elementP.removeAttribute('ken')
+
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <script>
+        //透過arguments實現override
+        function rect() {
+            if (arguments.length == 1) {
+                this.width = arguments[0];
+                this.height = arguments[0];
+            }
+            if (arguments.length > 1) {
+                this.width = arguments[0];
+                this.height = arguments[1];
+                //function方法名不能重複,所以覆蓋原本的toString()方法
+                this.toString = function () {
+                    console.log('width:'+this.width+'hei:'+this.height)
+                }
+            }
+        }
+        var r1 = new rect(10);
+        console.log(r1)
+
+        var r2 = new rect(10, 20)
+        //使用被改寫的TOSTRING方法
+        r2.toString();
+    </script>
+</body>
+</html>

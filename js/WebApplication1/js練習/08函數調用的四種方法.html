@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+   <script>
+       //=============================構造函數
+       function Btn(width, height, x, y) {
+           this.width = width;
+           this.height = height;
+           this.x = x;
+           this.y = y;
+
+       }
+       //構造函數調用方法 把this 給了b
+
+       var b = new Btn(100, 100, 30, 30)
+       //=============================借用math的min 實現數組[2,2,6,8]
+
+       //call/apply方法 如是undefinded or null時會是this=window
+       var m = Math.min.apply(null, [2, 2, 6, 8]);
+       console.log(m);
+
+       //=============================將一個類數組轉成真實數組
+       var t = {};
+       t['d'] = 1;//裡面要是索引
+       t[1] = true;
+       t[2] = 'ken';
+       t.length = 3
+       //借用Array slice的方法讓this=t就會把t(obj)傳入array方法
+       var k = Array.prototype.slice.call(t, 0);
+       console.log(k);
+
+
+
+
+   </script>
+</body>
+</html>

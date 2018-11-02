@@ -1,0 +1,78 @@
+﻿@charset "utf8";
+/*樣式重制，因為不同瀏覽器默認樣式不一致*/
+
+/*因為某些用戶電腦可能會有保護色,導致默認背景不是白色*/
+html {
+    background-color:#fff;
+    color:#000;
+    font-size:12px
+}
+body, div, p, filter,ul,ol, dl, dt, dd, h1, h2, h3, h4,form,pre,th,td,input,fieldset,button{
+    padding:0;
+    margin:0;
+}
+
+/*字體、行高*/
+body, input, textarea, button, select, pre, code, samp {
+    line-height:1.5;
+    font-family:'Microsoft JhengHei UI',Microsoft JhengHei
+}
+
+
+/*讓h1為父類別的比例，而不是原本的*/
+h1, h2, h3, h4, h5, h6,input,textarea,button,select {
+font-size:100%;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+font-family:'Microsoft JhengHei UI'Tahoma,Microsoft JhengHei
+}
+/*去掉加粗效果*/
+h1, h2, h3, h4, h5, h6,b,strong {
+font-weight:normal;
+}
+/*去掉斜體字效果*/
+address,cite,dfn,em,i,optgroup,var{
+    font-style:normal;
+}
+
+table {
+border-collapse:collapse;
+/*邊框的邊距*/
+border-spacing:0;
+text-align:left;
+}
+caption, th {
+text-align:inherit;
+}
+ul, ol, menu {
+list-style  :none;
+}
+/*需要對圖片、filest的邊框為0*/
+img, fieldset {
+border:0;
+}
+/*中線對齊*/
+img, object, input, textarea, button, select {
+vertical-align:middle;
+}
+article, aside, footer, header, section, nav, figure, menu {
+display:block;
+}
+audio, canvas, video {
+display:inline-block;
+*display:inline;
+*zoom:1;
+}
+textarea {
+    /*文本域可浮動*/
+    overflow:auto;
+    resize:vertical;
+}
+input, textarea,button,select,a {
+    outline:0 none;
+}
+a, ins, s, u, del {
+text-decoration:none;
+}

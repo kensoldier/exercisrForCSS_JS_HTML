@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        html, body, h1, div, ul, li {
+        margin:0;
+        padding:0;
+        }
+        ul {
+                 list-style:none;
+                 background-color:#ccc
+        }
+        .menu {
+         border:1px solid #ccc;
+        position:absolute;
+        width:200px;
+        display:none;
+        }
+            .menu .menu-item {
+               border:1px solid #4cff00;
+               cursor:pointer;
+               padding:5px;
+            }
+                .menu .menu-item:hover {
+                background-color:red;
+                }
+
+    </style>
+</head>
+<body>
+    <h1 id="hTitle">點擊右鍵</h1>
+    <ul class="menu"id="menuList">
+        <li class="menu-item">1</li>
+        <li class="menu-item">2</li>
+        <li class="menu-item">3</li>
+        <li class="menu-item">4</li>
+        <li class="menu-item">5</li>
+    </ul>
+    <script>
+        /*event.button
+        0 沒有按下建
+        1 按下左鍵1次
+        2 按下右鍵1次
+        3 同時按下左右建
+        4 按下中鍵
+        5 按下左鍵+中鍵
+        6 按下中鍵+右鍵
+        7 按下左鍵3次
+        */
+        //按下右鍵菜單
+        (function () {
+            window.onload = function () {
+                var hTitle = document.getElementById('hTitle');
+                var menuList = document.getElementById('menuList');
+                //因為右鍵沒有click事件
+                hTitle.onmousedown = function (e) {
+                    e = e || window.event;
+                    //e.botton 獲得點擊事件
+                    if (e.button == 2 || e.button == 6) {
+                        menuList.style.display = "block";
+                        //彈出位置
+                        var pageX = e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft)
+                        var pageY = e.clientY + (document.documentElement.scrollTop || document.body.scrollTop)
+                        
+                        menuList.style.left = pageX + "px";
+                        menuList.style.top = pageY + "px";
+                    };
+
+
+
+                    //阻止瀏覽器默認的右鍵行為
+                    //oncontextmenu瀏覽器默認的菜單
+                    document.oncontextmenu = function (e) {
+                        e = e || window.event;
+                        if (e.preventDefault) {
+                            e.preventDefault();
+                        } else {
+                            e.returnValue = false;
+                        };
+                        //買保險
+                        return false;
+                    }
+                };
+
+                document.onclick = function () {
+                    menuList.style.display = "none";
+                }
+            };
+        })()
+    </script>
+</body>
+</html>
