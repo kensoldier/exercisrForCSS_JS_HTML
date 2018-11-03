@@ -1,18 +1,56 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <script src="../scripts/documentReady.js"></script>
     <script src="../scripts/EventUtil.js"></script>
 </head>
+
 <body>
-    <ul class="list"id="list">
-        <li>11</li><li>22</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li>
-        <li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li>
-        <li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li>
-        <li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li><li>11</li>
+    <ul class="list" id="list">
+        <li>11</li>
+        <li>22</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
+        <li>11</li>
     </ul>
 
     <script>
@@ -44,14 +82,15 @@
                 var ulList = document.getElementById('list');
                 EventUtil.addEvent(ulList, 'click', function (e) {
                     var target = EventUtil.getTarget(e);
-                    if (target == ulList) { return };
+                    if (target == ulList) {
+                        return
+                    };
                     alert(target.innerHTML);
 
                 })
             })
         })()
-
-
     </script>
 </body>
+
 </html>

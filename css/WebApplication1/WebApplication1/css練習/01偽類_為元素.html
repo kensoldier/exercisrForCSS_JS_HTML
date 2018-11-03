@@ -1,45 +1,56 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 </head>
+
 <body>
+    saaa
     <style>
         /*偽造類*/
         p {
-           background-color:red;
-           font-size:20px;
+            background-color: red;
+            font-size: 20px;
         }
+
         a:link {
-            color:green;
+            color: green;
         }
+
         a:visited {
-        color:gold;
+            color: gold;
         }
+
         a:hover {
-        background-color:red
+            background-color: red
         }
+
         /*偽造元素*/
         span:first-child {
-        color:red;
+            color: red;
         }
+
         p:first-letter {
-        font-size:50px;
+            font-size: 50px;
         }
-         p::first-line {
-        color:yellow;
-                     }
+
+        p::first-line {
+            color: yellow;
+        }
+
         #temp::after {
-            content:'=========='
+            content: '=========='
         }
+
         #temp::before {
-            content:'----------'
+            content: '----------'
         }
-        </style>
+    </style>
     <div id="temp">
-        <a href="#">news</a><br/>
+        <a href="#">news</a><br />
         <a href="#">product</a><br />
         <a href="#">index</a><br />
     </div>
@@ -50,6 +61,7 @@
         <span>我是第二</span><br />
         <span>我是第三</span>
     </div>
-   
+
 </body>
+
 </html>
