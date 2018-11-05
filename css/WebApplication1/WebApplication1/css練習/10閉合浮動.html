@@ -1,46 +1,58 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <style>
-        body, div {
-        padding:0;margin:0;
-        }
+        body,
         div {
-        border:1px solid red;
+            padding: 0;
+            margin: 0;
         }
+
+        div {
+            border: 1px solid red;
+        }
+
         .fl {
-        float:right;
-        height:100px;
-        width:100px;
-        background-color:aquamarine;
+            float: right;
+            height: 100px;
+            width: 100px;
+            background-color: aquamarine;
         }
-        .clearfix::after,.clearfix::before {
-             /*content 要一個空盒因為要兼容OPERA瀏覽器*/
-             content:"";
-             /*觸發BFC特性*/
-             display:table;
+
+        .clearfix::after,
+        .clearfix::before {
+            /*content 要一個空盒因為要兼容OPERA瀏覽器*/
+            content: "";
+            /*觸發BFC特性*/
+            display: table;
 
         }
+
         .clearfix::after {
-        clear:both;
+            clear: both;
         }
+
         /*IE6 7要兼容要設定下面*/
         .clearfix {
-        *zoom:1;
+            *zoom: 1;
         }
+
         .clearfix {
-        width:600px;
-        margin:0 auto
+            width: 600px;
+            margin: 0 auto
         }
     </style>
 </head>
+
 <body>
     <div class="clearfix">
         <div class="fl">flaot's div</div>
-        asdjsdklfhskjfhsakdjhfskjdfhlkjhflkjsadhfsdakfhasuifhskdfhaslkfdflas
-        </div>
+        asdjsdklfhskjfhsakdjhfskjdfhlkjhflkjsadhfsdakfhasuifhskdfhaslkfdflasfgdgd
+    </div>
 </body>
+
 </html>

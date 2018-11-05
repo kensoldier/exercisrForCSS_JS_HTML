@@ -1,69 +1,87 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <style>
         /*浮動特性*/
         #float01 {
-        width:200px;
-        height:200px;
-        border:2px solid red;
-        background-color:yellow;
-        float:left
+            width: 200px;
+            height: 100px;
+            border: 2px solid red;
+            background-color: yellow;
+            float: left
         }
+
         #float02 {
-        width:300px;
-        height:300px;
-        border:2px solid red;
-        background-color:red;
-        float:left;
-        margin-left:15px
-       
+            width: 300px;
+            height: 200px;
+            border: 2px solid red;
+            background-color: red;
+            float: left;
+            margin-left: 15px
         }
+
         /*高度塌陷*/
         .parent {
-        border:1px solid black;
-        overflow:hidden;
+            border: 1px solid black;
+            overflow: hidden;
         }
+
+        .child-parent {
+            margin: 0 auto;
+            border: 1px solid red;
+            width: 700px;
+            height: 110px;
+            padding-top: 5px;
+        }
+
         .child {
-         border:1px solid black;
-        width:200px;
-        height:100px;
-        float:left;
+
+            border: 1px solid black;
+            width: 200px;
+            height: 100px;
+            float: left;
+            margin-left: 23px;
         }
+
         /*CLEAR  浮動*/
         .f1 {
-            background-color:aquamarine;
-            width:200px;
-            height:300px;
-            float:left;
+            background-color: aquamarine;
+            width: 200px;
+            height: 300px;
+            float: left;
         }
+
         .f2 {
-            background-color:orangered;
-            width:200px;
-            height:600px;
-            float:right;
+            background-color: orangered;
+            width: 200px;
+            height: 600px;
+            float: right;
         }
+
         .footer {
-        border:solid;
-        clear:both;
+            border: solid;
+            clear: both;
         }
     </style>
 </head>
-<body>
-  
-  
-      <div class="parent">
 
-          <div id="float01">i am ken</div>
-          <div id="float02">i am ken</div>
-          <p>ASDFGJHGSADTYUKLKJHGFAWESKREGFSAKJFHASLDJFGASDLJVNSDAJIVNIUCVHeqrgiuerhbiujnAEUCWEOIUHBOIUFHBERUIHBGRT</p>
-       
+<body>
+
+
+    <div class="parent">
+
+        <div id="float01">i am ken</div>
+        <div id="float02">i am ken</div>
+        <p>ASDFGJHGSADTYUKLKJHGFAWESKREGFSAKJFHASLDJFGASDLJVNSDAJIVNIUCVHeqrgiuerhbiujnAEUCWEOIUHBOIUFHBERUIHBGRT</p>
+        <div class="child-parent">
             <div class="child">1</div>
             <div class="child">2</div>
             <div class="child">3</div>
+        </div>
     </div>
 
     <hr />
@@ -71,4 +89,5 @@
     <div class="f2">2</div>
     <div class="footer">底部</div>
 </body>
+
 </html>

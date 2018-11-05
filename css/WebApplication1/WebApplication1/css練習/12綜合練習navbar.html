@@ -1,91 +1,121 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <style>
-        body, div, ul, li {
-        padding:0;margin:0;
+        body,
+        div,
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
         }
+
         body {
-        font:12px/20px 'Microsoft JhengHei UI'
+            font: 12px/20px 'Microsoft JhengHei UI'
         }
+
         /*去掉列表默認樣式*/
-        ul, li {
-        list-style:none
+        ul,
+        li {
+            list-style: none
         }
+
         a {
-        text-decoration:none;
-        /*把A的底線去掉*/
+            text-decoration: none;
+            /*把A的底線去掉*/
         }
+
         /*top-nav*/
         .top-nav {
-        border-top:4px solid #ff8500;
-        border-bottom:1px solid #edeef0;
-        height:42px;
-        line-height:42px;/*讓文字居中對其*/
+            border-top: 4px solid #ff8500;
+            border-bottom: 1px solid #edeef0;
+            height: 42px;
+            line-height: 42px;
+            /*讓文字居中對其*/
         }
+
         .tn-main {
-        margin:0 auto;
-        width:960px;
+            margin: 0 auto;
+            width: 960px;
         }
+
         /*左側導航*/
         .tn-nav {
-        float:left;
+            float: left;
         }
-        .tn-nav li {
-        float:left   ;
-        padding:0 15px; 
-            }
-       .tn-nav li:hover .tn-nav li:hover a/*因為A標籤不會繼承所以要再寫一次*/ {
-            background-color:#edeef0;
-            color:#ff8500;
-            }
-       
-        /*右側導航*/
-        .tn-pers{
-            float:right;
-        }
-        /*只要第一層有浮動左邊的效果*/
-         .tn-pers>li {
-        float:left   ;
-        padding:0 15px; 
-            }
-         /*因為A標籤不會繼承所以要再寫一次*/
-        .tn-pers>li:hover,.tn-pers>li>a:hover{
-            background-color:#edeef0;
-            color:#ff8500;
-            }
-        .Line-box {
-        display:none;
-        /*去掉默認文黨,用絕對位子去掉*/
-        position:absolute;
-        }
-        .Line:hover .Line-box {
-        display:block;
-        }
-        .Line-box a {
-        display:block;
-        }
-        .Line-box li {
-        border:1px solid ;
-        width:104px;
-        height:31px;
-        line-height:31px;
-        border-top:none;
-        margin-left:-15px;
-        padding:0 15px;
-        }
-      .Line-box li:hover,.Line-box li a:hover{
-           background-color:#edfff0;
-            color:#ff8500;
-      }
 
+        .tn-nav li {
+            float: left;
+            padding: 0 15px;
+        }
+
+        .tn-nav li:hover,
+        .tn-nav li:hover a
+
+        /*因為A標籤不會繼承所以要再寫一次*/
+            {
+            background-color: #edeef0;
+            color: #ff8500;
+        }
+
+        /*右側導航*/
+        .tn-pers {
+            float: right;
+        }
+
+        /*只要第一層有浮動左邊的效果*/
+        .tn-pers>li {
+            float: left;
+            padding: 0 15px;
+        }
+
+        /*因為A標籤不會繼承所以要再寫一次*/
+        .tn-pers>li:hover,
+        .tn-pers>li>a:hover {
+            background-color: #edeef0;
+            color: #ff8500;
+        }
+
+        .Line-box {
+            display: none;
+            /*去掉默認文黨,用絕對位子去掉*/
+            position: absolute;
+        }
+
+        .Line:hover .Line-box {
+            display: block;
+        }
+
+        .Line-box a {
+            display: block;
+        }
+
+        .Line-box li {
+            border: 1px solid;
+            width: 104px;
+            height: 31px;
+            line-height: 31px;
+            border-top: none;
+            margin-left: -15px;
+            padding: 0 15px;
+            z-index: 100;
+        }
+
+        .Line-box li:hover,
+        .Line-box li a:hover {
+            background-color: #edfff0;
+            color: #ff8500;
+        }
     </style>
 </head>
+
 <body>
     <div class="top-nav">
+
         <div class="tn-main">
             <ul class="tn-nav">
                 <li><a href="#asd">首頁</a></li>
@@ -100,7 +130,7 @@
                         <li><a href="#">私訊</a></li>
                         <li><a href="#">評論</a></li>
                         <li><a href="#">@00</a></li>
-                    </ul> 
+                    </ul>
                 </li>
 
                 <li><a href="#">FB</a></li>
@@ -111,4 +141,5 @@
 
     </div>
 </body>
+
 </html>

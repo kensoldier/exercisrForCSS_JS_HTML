@@ -10,6 +10,14 @@
 <body>
     saaa
     <style>
+        body,
+        p,
+        h1,
+        a {
+            margin: 0;
+            border: 0;
+        }
+
         /*偽造類*/
         p {
             background-color: red;
@@ -42,17 +50,18 @@
         }
 
         #temp::after {
-            content: '=========='
+            content: '=====8888==='
         }
 
         #temp::before {
+
             content: '----------'
         }
     </style>
     <div id="temp">
-        <a href="#">news</a><br />
-        <a href="#">product</a><br />
-        <a href="#">index</a><br />
+        <a href="#">news</a>
+        <a href="#">product</a>
+        <a href="#">index</a>
     </div>
     <p>pppppp</p>
     <h1>hhhhhhhh</h1>
@@ -62,6 +71,12 @@
         <span>我是第三</span>
     </div>
 
+    <div draggable="true" style="height:50px;width:50px;border:1px solid">
+
+    </div>
+    <div style="height:50px;width:150px;border:1px solid">
+        <p contenteditable="true">这是一段可编辑的段落。请试着编辑该文本。</p>
+    </div>
 </body>
 
 </html>

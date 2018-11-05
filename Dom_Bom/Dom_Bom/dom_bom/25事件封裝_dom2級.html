@@ -1,13 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 
     <script src="../scripts/documentReady.js"></script>
     <script src="../scripts/EventUtil.js"></script>
 </head>
+
 <body>
     <input type="button" id="btn" value="000" />
     <script>
@@ -17,10 +19,13 @@
                 function () {
                     var Obtn = document.getElementById('btn');
                     //是window屬性 可以直接調用
-                    EventUtil.addEvent(btn, 'click', function () { alert('ok') })
+                    EventUtil.addEvent(btn, 'click', function () {
+                        alert('ok')
+                    })
                 })
-            EventUtil.
+
         })()
     </script>
 </body>
+
 </html>

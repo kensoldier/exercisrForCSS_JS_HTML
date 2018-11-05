@@ -1,0 +1,24 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>请点击图像上F和C的最下末端圆点</p>
+    <img src="../img/logo.png" border="0" usemap="#fishc" alt="Planets" />
+
+    <map name="fishc" id="fishc">
+        <!--中心x，中心y，半径-->
+        <area shape="circle" coords="109,63,10" href="area1.html" target="_blank" alt="F" />
+        <!--左上角坐标x，左上角坐标y，横轴，纵轴-->
+        <area shape="rect" coords="0,0,66 ,77" href="area2.html" target="_blank" alt="Python" />
+
+    </map>
+    <p><b>注释：</b>img 元素中的 "usemap" 属性引用 map 元素中的 "id" 或 "name" 属性（根据浏览器），所以我们同时向 map 元素添加了 "id" 和 "name" 属性。</p>
+</body>
+
+</html>
