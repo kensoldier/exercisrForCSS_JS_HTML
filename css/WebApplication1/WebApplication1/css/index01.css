@@ -34,11 +34,14 @@ a {
 
 /*搜索區域*/
 .h-header .top-nav .search {
-    margin: 0 265px 0 300px;
+    border: 1px solid;
+    margin: 0 0 0 300px;
     padding-top: 10px;
     line-height: 30px;
     position: relative;
 }
+
+
 
 .h-header .search .course-sel {
     position: relative;

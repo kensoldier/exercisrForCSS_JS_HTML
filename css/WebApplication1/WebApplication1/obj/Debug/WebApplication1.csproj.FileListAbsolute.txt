@@ -31,3 +31,36 @@ c:\users\gnken\onedrive\文件\visual studio 2015\Projects\WebApplication1\WebAp
 c:\users\gnken\onedrive\文件\visual studio 2015\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 c:\users\gnken\onedrive\文件\visual studio 2015\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 c:\users\gnken\onedrive\文件\visual studio 2015\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+E:\前端\css\WebApplication1\WebApplication1\bin\ApplicationInsights.config
+E:\前端\css\WebApplication1\WebApplication1\bin\roslyn\csc.exe
+E:\前端\css\WebApplication1\WebApplication1\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\前端\css\WebApplication1\WebApplication1\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\前端\css\WebApplication1\WebApplication1\bin\roslyn\System.Collections.Immutable.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\roslyn\System.Reflection.Metadata.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\roslyn\vbc.exe
+E:\前端\css\WebApplication1\WebApplication1\bin\roslyn\VBCSCompiler.exe
+E:\前端\css\WebApplication1\WebApplication1\bin\roslyn\VBCSCompiler.exe.config
+E:\前端\css\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+E:\前端\css\WebApplication1\WebApplication1\bin\WebApplication1.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.AI.Agent.Intercept.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.AI.DependencyCollector.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.AI.Web.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.AI.WindowsServer.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.ApplicationInsights.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.AI.DependencyCollector.xml
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.AI.Web.xml
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.AI.WindowsServer.xml
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.ApplicationInsights.xml
+E:\前端\css\WebApplication1\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\前端\css\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\前端\css\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+E:\前端\css\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb

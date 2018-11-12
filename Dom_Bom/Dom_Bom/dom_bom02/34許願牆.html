@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../scripts/documentReady.js"></script>
+    <script src="../scripts/EventUtil.js"></script>
+    <style>
+        html,
+        body,
+        div,
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background: red url('../img/磚塊.jpg') repeat;
+            font-size: 11px;
+
+        }
+
+        .wall {
+            position: relative;
+            width: 960px;
+            height: 627px;
+            background: #396848 no-repeat;
+            opacity: 0.8;
+            margin: 50px auto;
+        }
+
+        .tip {
+            width: 210px;
+            position: absolute;
+            cursor: move;
+            /* z-index: 10; */
+        }
+
+        /* tip  head */
+        .tip .tip-h {
+            position: relative;
+            background: url('../img/tip頭.png') no-repeat;
+            background-size: cover;
+            height: 37px;
+        }
+
+        .tip .tip-h .head-msge {
+            position: absolute;
+            padding: 25px 0 0 60px;
+        }
+
+        .tip-h .closeBtn {
+            position: absolute;
+            top: 5px;
+            right: 45px;
+            border: 1px solid;
+            cursor: pointer;
+        }
+
+        /* tip  body */
+        .tip .tip-b {
+            background: url('../img/tip身體.png') repeat-y;
+            background-size: 210px;
+            height: 80px;
+            width: 110px;
+            /* border: 1px solid; */
+            padding: 0 0 0 60px;
+            word-break: break-all
+        }
+
+        .tip .tip-f {
+            background: url('../img/tip尾八.png') no-repeat;
+            background-size: 207px;
+            height: 15px;
+            text-align: right;
+            padding-right: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wall" id="wall">
+
+    </div>
+    <script>
+        var data = [{
+                "id": 1,
+                "name": "ken",
+                "content": "xxxxxxddddddddddddddddddddxxxxxx",
+                "time": "2016-02-17"
+            },
+            {
+                "id": 2,
+                "name": "Tim",
+                "content": "OOOOxxxxdddddddddddddddddddddxxxx",
+                "time": "2016-02-18"
+            },
+            {
+                "id": 3,
+                "name": "Tony",
+                "content": "xxxxxxFFdddddddddddddFFx",
+                "time": "2016-02-19"
+            },
+            {
+                "id": 4,
+                "name": "Pony",
+                "content": "ddddddxxxxddddddddddddddddxx",
+                "time": "2016-02-20"
+            },
+            {
+                "id": 5,
+                "name": "kiven",
+                "content": "oopxxxxxxddddddddddddddddxxx",
+                "time": "2016-02-21"
+            },
+            {
+                "id": 1,
+                "name": "000",
+                "content": "xxxxxxxxxxxx",
+                "time": "2016-02-17"
+            },
+            {
+                "id": 1,
+                "name": "000",
+                "content": "xxxxxxxxxxxx",
+                "time": "2016-02-17"
+            },
+            {
+                "id": 1,
+                "name": "000",
+                "content": "xxxxxxxxxxxx",
+                "time": "2016-02-17"
+            },
+            {
+                "id": 1,
+                "name": "000",
+                "content": "xxxxxxxxxxxx",
+                "time": "2016-02-17"
+            },
+            {
+                "id": 1,
+                "name": "000",
+                "content": "xxxxxxxxxxxx",
+                "time": "2016-02-17"
+            },
+        ];
+        (function () {
+            //點擊z-index 會增加
+            var maxZIndex = 1,
+                tipArray = [], //紀錄tip數輛
+                isMove = false, //點擊後可以動 mousedown
+                tempX = 0, //紀錄滑鼠一開始點擊位子
+                tempY = 0,
+                moveNode = null;
+            document.myReady(function () {
+                loadTipDiv(data);
+                //加載完之後 給所有的tip綁定click事件
+                for (var i = 0; i < tipArray.length; i++) {
+                    tipArray[i].onmousedown = function (e) {
+                        this.style.zIndex = ++maxZIndex;
+                        isMove = true;
+                        e = e || window.event;
+                        tempX = e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+                        tempY = e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
+                        //用事件去區分 mousedown  => mousemove  =>mouseup
+                        moveNode = this;
+                    }
+                    tipArray[i].onmouseup = function (e) {
+                        isMove = false;
+                    }
+                    //滑鼠點擊後isMove=true 所以 這時mousemove 的判斷條件如果只是 isMove=true 所有元素都會是可以移動的 所以要加一個判斷條件 
+                    //在mousedown時 紀錄點擊的是哪個元素
+                    tipArray[i].onmousemove = function (e) {
+                        e = e || window.event;
+                        var pageX = e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft);
+                        var pageY = e.clientY + (document.documentElement.scrollTop || document.body.scrollTop);
+                        var w = pageX - tempX;
+                        var h = pageY - tempY;
+                        if (isMove && this == moveNode) {
+                            this.style.left = parseFloat(this.style.left) + w + 'px';
+                            this.style.top = parseFloat(this.style.top) + h + 'px';
+
+                        }
+                        tempX = pageX;
+                        tempY = pageY;
+                    }
+                }
+                var closeBtn = document.getElementsByTagName('i');
+                for (var j = 0; j < closeBtn.length; j++) {
+                    closeBtn[j].onclick = function (e) {
+                        this.parentNode.parentNode.style.display = 'none';
+
+                    };
+                }
+
+
+            })
+
+            function loadTipDiv(data) {
+                var strHTMLTipDivs = [];
+                for (var i = 0; i < data.length; i++) {
+                    var itemDta = data[i];
+                    var strHTML = "";
+                    //動態生成資料
+                    strHTML += '<div class="tip">';
+                    strHTML += '<div class="tip-h">';
+                    strHTML += '<div class="head-msge">' + itemDta.id + '...' + itemDta.time + '</div>'
+                    strHTML += '<i class="closeBtn">X</i>';
+                    strHTML += '</div>';
+                    strHTML += ' <div class="tip-b">' + itemDta.content + '</div>';
+                    strHTML += ' <div class="tip-f">' + itemDta.name + '</div>';
+                    strHTML += '</div>';
+                    strHTMLTipDivs.push(strHTML);
+                }
+                var wall = document.getElementById('wall');
+                wall.innerHTML += strHTMLTipDivs.join('');
+                //給tip所有元素的第一個  這時wall加載了 數個div為tip的元素
+                for (var j = 0; j < wall.childNodes.length; j++) {
+                    if (wall.childNodes[j].nodeType == 1) {
+                        wall.childNodes[j].style.left = Math.random() * (960 - 210) + 'px';
+                        wall.childNodes[j].style.top = Math.random() * (627 - 221) + 'px';
+                        wall.childNodes[j].style.zIndex = 1;
+                        //加入所有的tip標籤
+                        tipArray.push(wall.childNodes[j]);
+                    }
+                }
+            }
+        })()
+    </script>
+</body>
+
+</html>

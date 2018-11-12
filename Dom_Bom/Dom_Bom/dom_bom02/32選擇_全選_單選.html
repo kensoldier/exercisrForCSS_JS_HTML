@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../scripts/documentReady.js"></script>
+    <script src="../scripts/EventUtil.js"></script>
+    <style>
+        select{
+        height: 200px;
+        width:100px;
+        float: left;
+    }
+    .box{
+        float: left;
+        width:100px;
+        /* border: 1px solid; */
+        text-align: center;
+    }
+    .box input{
+        width: 50px;
+        margin: 20px 0 0 0;
+    }
+    </style>
+</head>
+
+<body>
+    <select name="left" id="left" multiple="multiple">
+        <option value="1">qqq</option>
+        <option value="2">www</option>
+        <option value="3">eee</option>
+        <option value="4">rrr</option>
+        <option value="5">ttt</option>
+    </select>
+    <div class="box" id="box">
+        <input type="button" value=">" dir="add">
+        <input type="button" value=">>" dir="addAll">
+        <input type="button" value="<" dir="del">
+        <input type="button" value="<<" dir="delAll">
+    </div>
+    <select name="right" id="right" multiple="multiple">
+
+    </select>
+
+    <script>
+        (function () {
+            document.myReady(function () {
+                var box = document.getElementById('box');
+                EventUtil.addEvent(box, 'click', function (e) {
+                    var target = EventUtil.getTarget(e);
+                    //target ===box 點擊是本身時
+                    if (target === this) {
+                        return;
+                    }
+                    var dir = target.getAttribute('dir');
+                    var left =document.getElementById('left');
+                    var right =document.getElementById('right');
+                    // 全部/非全部 =>第一參數判斷   左邊->又變   右邊->左邊 只要function的參數對調
+                    //有方向之後再寫function
+                    switch (dir) {
+                        case 'add':
+                            add(false,left,right);
+                            break;
+                        case 'addAll':
+                            add(true,left,right);
+                            break;
+                        case 'del':
+                            add(false,right,left);
+                            break;
+                        case 'delAll':
+                            add(true,right,left);
+                            break;
+                    }
+                    // 從1移動到2
+                    function add(isAll,sel1,sel2){
+                        var tempArray=[];
+                        for(var i=0,k=sel1.length;i<k;i++){
+                            if(isAll||sel1.options[i].selected){
+                                tempArray.push(sel1.options[i]);
+                            }
+                        }
+                        while(tempArray.length>0){
+                            var opt =tempArray.pop();
+                            // ie8有BUG  如選項沒有重第一個選項刪除，直接追加到第2的裡面 會報參數錯誤
+                            sel1.remove(opt.index);
+                            sel2.add(opt,null);
+                        }
+                    }
+                })
+            })
+        })()
+    </script>
+</body>
+
+</html>

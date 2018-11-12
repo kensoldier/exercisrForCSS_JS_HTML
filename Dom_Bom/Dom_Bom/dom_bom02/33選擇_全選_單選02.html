@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../scripts/documentReady.js"></script>
+    <script src="../scripts/EventUtil.js"></script>
+    <style>
+        .tab{
+                border: 1px solid;
+                border-collapse:collapse;
+            }
+        .tab thead{
+                background-color: brown;
+            }
+        .tab th, td{
+            border: 1px solid;
+        }
+        .aaa{
+            width: 50px;
+            height: 50px;
+            border: 1px solid;
+            text-overflow : ellipsis;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aaa" >
+        dddddddddddddddd
+         </div>
+    <table class="tab">
+        <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" id="ckAll" name="ckAll">
+                </th>
+                <th>user</th>
+                <th>sex</th>
+                <th>grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>ken</td>
+                <td>boy</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>Peter</td>
+                <td>boy</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>Amy</td>
+                <td>girl</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+    (function(){
+        document.myReady(function(){
+            var ckAll=document.getElementById('ckAll');
+            EventUtil.addEvent(ckAll,'click',function(e){
+                var inputArray=document.querySelectorAll('.tab tbody tr td:first-child input');
+                for(var i=0;i<inputArray.length;i++){
+                    inputArray[i].checked=this.checked;
+                }
+            })
+
+        })
+    })()
+    </script>
+</body>
+
+</html>

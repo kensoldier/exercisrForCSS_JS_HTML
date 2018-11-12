@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../scripts/documentReady.js"></script>
+    <script src="../scripts/EventUtil.js"></script>
+</head>
+
+<body>
+    <select name="pro" id="pro"></select>
+    <select name="city" id="city"></select>
+
+    <script>
+        var data = [{
+                name: "台中",
+                cities: ['西屯', '北屯', '南屯', '大雅', '大里']
+            },
+            {
+                name: "台北",
+                cities: ['大安', '淡水', '西區', '松山', '中正']
+            },
+            {
+                name: "高雄",
+                cities: ['小港', '鹽埕', '鳳山', '苓雅', '三民']
+            },
+        ];
+            (function(){
+                document.myReady(function(){
+                    var pro =document.getElementById('pro');
+                    var city=document.getElementById('city');
+                    initSel(data);
+                     //初始化CITY
+                    initCity();
+                    EventUtil.addEvent(pro,'change',function(e){
+                        initCity();
+                    })
+                   
+
+                })
+                function initCity(){
+                    var cities,
+                        proName=pro.value;
+                        pro =document.getElementById('pro'),
+                        city=document.getElementById('city');
+
+                            for(var j=0,h=data.length;j<h;j++){
+                                if(data[j].name==proName){
+                                    cities=data[j].cities;
+                                }
+                            }
+                            //clear city
+                            city.innerHTML="";
+
+                            for(var m=0,g=cities.length;m<g;m++){
+                                var optCity=document.createElement('option');
+                                optCity.value=cities[m];
+                                optCity.text=cities[m];
+                                city.add(optCity,null)
+                            }
+
+                }
+                function initSel(data){
+                var pro =document.getElementById('pro');
+                for(var i=0,k=data.length;i<k;i++){
+                    var opt=document.createElement('option');
+                    opt.value=data[i].name;
+                    opt.text=data[i].name;
+                    pro.add(opt,null);
+                }
+            }
+            })()
+
+
+    </script>
+</body>
+
+</html>

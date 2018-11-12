@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../scripts/documentReady.js"></script>
+    <script src="../scripts/EventUtil.js"></script>
+</head>
+
+<body>
+    <input type="text">
+    <input type="text">
+    <input type="radio">
+    <input type="checkbox">
+
+
+    <select id="sel" name="sel">
+        <option value="大溪地">1</option>
+     
+    </select>
+
+    <script>
+        //HTMLInputElement 對象 所有的INPUT 都繼承自HTMLInputElement->HTMLElement->Element->Node->EventTarget->object
+        //HTMLInputElement  常用 method / action  屬性 submit / reset(form重製) 方法
+        /*HTMLSelectElement  
+        常用屬性  
+        selectIndex:設定選項
+        type:slect-multide  select-one
+        option:獲取選項
+        常用方法
+        remove(index)
+        add(item[,before])
+        問題BUG IE8  設置select tag不能透過innerHTML 不能用
+        */
+       (function(){
+        var data = [
+            {name:'台北',value:1},
+            {name:'台中',value:2},
+            {name:'高雄',value:3},
+            {name:'屏東',value:4}
+        ];
+        document.myReady(function(){
+            initSel(data);
+            var  sel =document.getElementById('sel');
+            EventUtil.addEvent(sel,'change',function(e){
+                var selOpt = this.options[this.selectedIndex];
+                alert(selOpt.value+selOpt.text);
+            })
+        })
+
+        function initSel(data){
+            var  sel =document.getElementById('sel');
+            for(var i=0,k=data.length;i<k;i++){
+                var opt=document.createElement('option');
+                opt.text=data[i].name;
+                opt.value=data[i].value;
+                sel.add(opt,null);
+            }
+        }
+       })()
+        
+    </script>
+</body>
+
+</html>

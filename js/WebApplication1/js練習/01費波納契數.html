@@ -1,29 +1,31 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 </head>
+
 <body>
+
     <script>
         var fn1 = 1,
             fn2 = 1,
             i,
-            result
-            ;
-        for (i = 3; i <=20; i++) {
+            result;
+        for (i = 3; i <= 20; i++) {
             result = fn1 + fn2;
 
             fn2 = fn1;
             fn1 = result;
-           
+
         }
-        
+
         console.log(result);
 
 
-        var a = {}; 
+        var a = {};
         a.name = 'dddd';
         a.age = 8080;
         for (var k in a) {
@@ -31,4 +33,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -1,10 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 </head>
+
 <body>
     <script>
         var aa = [1, 2, 5, 4, 7, 'sda', '4', 5, 'asd'];
@@ -18,7 +20,7 @@
             if (!isNaN(aa[i])) {
                 ill++;
             }
-          
+
         }
         console.log(ill);
         console.log(rightdul)
@@ -27,10 +29,10 @@
         //var aaaa = function (a, b) {
         //    return a - b;
         //}
-     
+
         arr = [1, 5, 60, 11, 50, 55];
         //console.log(arr.sort(a-b))  method-1
-        
+
         //要反轉就b-a
         arr.sort(function (a, b) {
             return a - b;
@@ -40,13 +42,14 @@
         var a2 = [0, 1, 2, 3, 4, 5];
         var t = a2.splice(3);
         console.log(a2);
-        
-        var a2 = [0, 1, 2, 3, 4, 5];
-        console.log(a2.splice(2,2))
 
         var a2 = [0, 1, 2, 3, 4, 5];
-        var t2=a2.splice(2,0,2,55,66,77,88)
+        console.log(a2.splice(2, 2))
+
+        var a2 = [0, 1, 2, 3, 4, 5];
+        var t2 = a2.splice(2, 0, 2, 55, 66, 77, 88)
         console.log(a2)
-       </script>
+    </script>
 </body>
+
 </html>
