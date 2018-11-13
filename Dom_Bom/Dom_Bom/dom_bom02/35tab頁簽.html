@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../scripts/documentReady.js"></script>
+    <script src="../scripts/EventUtil.js"></script>
+    <style>
+        html,
+        body,
+        div,
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .tab {
+            padding: 20px;
+            width: 500px;
+        }
+
+        .tab .tab-h {
+            height: 30px;
+            position: relative;
+            top: 1px;
+            z-index: 2
+        }
+
+        .tab .tab-h .tab-h-item {
+            float: left;
+            border: 1px solid #ccc;
+            background-color: #eee;
+        }
+
+        .tab-h .tab-h-item a {
+            text-align: center;
+            color: #333333;
+            display: block;
+            text-decoration: none;
+            width: 100px;
+            line-height: 28px;
+
+        }
+
+        .tab-h .tab-h-list li.active {
+            border-bottom-color: #FFF;
+            background-color: #fff;
+        }
+
+        .tab-b {
+            border: 1px solid #ccc;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab-b .tab-b-item {
+            display: none;
+            height: 300px;
+            padding: 10px;
+        }
+
+        .tab .tab-b div.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab-h">
+            <ul class="tab-h-list">
+                <li class="tab-h-item" tabId="1"><a href="javascript:boid(0)">產品</a></li>
+                <li class="tab-h-item active" tabId="2"><a href="javascript:boid(0)">用戶</a></li>
+                <li class="tab-h-item" tabId="3"><a href="javascript:boid(0)">新聞</a></li>
+                <li class="tab-h-item" tabId="4"><a href="javascript:boid(0)">體運</a></li>
+            </ul>
+        </div>
+        <div class="tab-b">
+            <div class="tab-b-item" tabId="1">頁簽1</div>
+            <div class="tab-b-item active" tabId="2">頁簽2</div>
+            <div class="tab-b-item" tabId="3">頁簽3</div>
+            <div class="tab-b-item" tabId="4">頁簽4</div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            document.myReady(function () {
+                var tabHeadList = document.querySelectorAll('.tab-h-list li');
+                var tabBodyList = document.querySelectorAll('.tab-b .tab-b-item');
+                for (var i = 0; i < tabHeadList.length; i++) {
+                    EventUtil.addEvent(tabHeadList[i], "click", function (e) {
+                        var tabId = this.getAttribute('tabId');
+                        for (var j = 0; j < tabHeadList.length; j++) {
+                            tabHeadList[j].className = "tab-h-item";
+                        }
+                        this.className = "tab-h-item active";  
+                        
+                        console.log(tabId)
+
+
+                        for (var k = 0; k < tabBodyList.length; k++) {
+                            if (tabBodyList[k].getAttribute('tabId') == tabId) {
+                                // console.log(tabBodyList[k].getAttribute('tabId'))
+                                tabBodyList[k].className ="tab-b-item active";
+                            } else {
+                                tabBodyList[k].className = "tab-b-item";
+                            }
+
+                        }
+
+                    })
+                }
+
+
+
+            })
+        })()
+    </script>
+</body>
+
+</html>
