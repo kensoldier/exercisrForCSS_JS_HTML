@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../scripts/L.js"></script>
+    <style>
+            html,div,h3,body{
+            padding: 0;
+            margin: 0;
+        }
+        .dialog{
+            position: absolute;
+            top:50%;
+            left: 50%;
+            margin-top: -151px;
+            margin-left:-151px; 
+            border: 1px solid #CCC;
+            width: 300px;
+            /* display: none; */
+            background-color: #eee;
+            z-index: 1000;
+        }
+        .dialog-wrap{
+            display: none;
+        }
+        .dialog .dialog-h{
+            height: 30px;
+            border: 1px solid #CCC;
+            position: relative;
+        }
+        .dialog-h .closeBtn{
+            position: absolute;
+            top:8px;
+            right: 15px;
+            cursor: pointer;
+        }
+        .dialog .dialog-b{
+            border: 1px solid #CCC;
+            height: 269px;
+        }
+        .dialog-cover{
+            position: absolute;
+            top:0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background-color:rgba(8, 5, 5, 0.767);
+            opacity:0.8;
+            display: none;
+            z-index:100;
+            /* display: none; */
+        }
+        </style>
+</head>
+
+<body>
+    <input type="button" value="跳出堆畫框" id="btn">
+    <!-- 規定用戶要使用對話框必須 -->
+    <!-- 1.div class=dialog"" -->
+    <!-- 給div 增加 title 不果沒有標題為空  -->
+    <!-- div innerHTHL 式顯示用的 -->
+    <div id="MDialog" class="dialog-wrap" id="mDialog" title="跳出推畫框">
+        <p>456</p>
+        <input type="button" value="close">
+    </div>
+
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById('btn');
+            var dialog = L.Dialog("#MDialog")  //為了怕使用著忘記顯new
+            btn.onclick = function () {
+                //var dialog = new Dialig("#MDialog");//再選擇器上創建 dialog 
+                //L. 是為了寫進框架裡面 且框架裡可能有多個組件  所以要寫一個L組件
+                dialog.show(); //彈出堆畫框
+            }
+        }
+    </script>
+</body>
+
+</html>

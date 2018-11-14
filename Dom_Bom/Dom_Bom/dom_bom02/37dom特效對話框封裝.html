@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,div,h3,body{
+        padding: 0;
+        margin: 0;
+    }
+    .dialog{
+        position: absolute;
+        top:50%;
+        left: 50%;
+        margin-top: -151px;
+        margin-left:-151px; 
+        border: 1px solid #CCC;
+        width: 300px;
+        /* display: none; */
+        background-color: #eee;
+    }
+    .dialog-wrap{
+       
+    }
+    .dialog .dialog-h{
+        height: 30px;
+        border: 1px solid #CCC;
+        position: relative;
+    }
+    .dialog-h .closeBtn{
+        position: absolute;
+        top:8px;
+        right: 15px;
+        cursor: pointer;
+    }
+    .dialog .dialog-b{
+        border: 1px solid #CCC;
+        height: 269px;
+    }
+    .dialog-cover{
+        position: absolute;
+        top:0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color:rgba(8, 5, 5, 0.767);
+        opacity:0.8;
+        display: none;
+        /* display: none; */
+    }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="彈出邊框" id="btn">
+    <div class="dialog-wrap" id="dialog-wrap">
+        <div class="dialog-cover" id="dialog-cover"></div>
+        <div class="dialog" id="dialog">
+            <div class="dialog-h">
+                <span class="closeBtn" id="closeBtn">x</span>
+                <h3>對話框頭不</h3>
+            </div>
+            <div class="dialog-b">
+                body
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+        <li>&</li>
+    </ul>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById('btn');
+            btn.onclick = function () {
+                var dialog = document.getElementById('dialog-wrap');
+                dialog.style.display = 'block';
+            }
+            var closeBtn = document.getElementById('closeBtn');
+            var dialogCover = document.getElementById('dialog-cover');
+            closeBtn.onclick = function () {
+                closeBtn.parentNode.parentNode.parentNode.style.display = 'none';
+            }
+            dialogCover.onclick = function () {
+                closeBtn.parentNode.parentNode.parentNode.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+
+</html>
