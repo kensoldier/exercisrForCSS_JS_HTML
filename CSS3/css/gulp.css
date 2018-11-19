@@ -1,0 +1,13 @@
+/* gulp 先安裝全局的包 npm i -g gulp  
+1.到該項目下 npm init -y 會得到初始化的 package.json檔 注意該資料夾下不能是中文
+2.把gulp安裝到本地  npm i -S gulp   會多一個node-nodules資料夾 裡面很多文件
+3.安裝gulp 的 autoprefixer => npm i -S gulp-autoprefixer
+4.新增gulpfile.js 
+
+檔案刪除  可以上網找配置
+
+*/
+.box {
+    flex-flow: column nowrap;
+    display: flex;
+}
