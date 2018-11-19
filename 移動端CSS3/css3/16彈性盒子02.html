@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       html,
+        body,
+        div {
+            padding: 0;
+            margin: 0;
+        }
+        .wrap {
+            width: 960px;
+            margin: 5px auto;
+            border: 1px solid;
+            font: 16px/1.5 'Microsoft'
+        }
+        .bd {
+            display: flex;
+            flex-wrap: wrap;
+            
+            /* justify-content: flex-start; main軸的方向 靠左對其 */
+            /* justify-content:end main軸的方向 靠右對其*/
+            /* justify-content:center 居中對其 */
+            justify-content:space-between  往左右對其 不留兩邊距離
+            /* justify-content: space-around 往兩邊對其 但不靠邊 */
+        }
+
+        .bd .child {
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            background-color: blueviolet
+        }
+    </style>
+</head>
+<body>
+        <body>
+                <div class="wrap">
+                    <div class="hd">XXXXXXXXXXXXXXX</div>
+                    <div class="bd">
+                        <div class="child">1</div>
+                        <div class="child">2</div>
+                        <div class="child">3</div>
+                        <div class="child">4</div>
+                        <div class="child">5</div>
+                        <div class="child">1</div>
+                        <div class="child">2</div>
+                        <div class="child">3</div>
+                        <div class="child">4</div>
+                        <div class="child">5</div>
+                        <div class="child">1</div>
+                        <div class="child">2</div>
+                        <div class="child">3</div>
+                        <div class="child">4</div>
+                        <div class="child">5</div>
+                    </div>
+                </div>
+</body>
+</html>

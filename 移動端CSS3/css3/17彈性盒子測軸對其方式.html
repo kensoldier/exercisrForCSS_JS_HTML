@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        div {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 900px;
+            height: 500px;
+            display: flex;
+            border: 1px solid;
+            /* align-items:flex-start; 默認 */
+            /* align-items: center;全部對其軸心 */
+            /* align-items: flex-end 全部貼著最下面 */
+            /* align-items: stretch; 要沒有設高不才能 */
+            /* align-items: baseline; */
+        }
+
+        .child {
+            width: 100px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="child" style="height:100px;"></div>
+        <div class="child" style="height:120px"></div>
+        <div class="child" style="height:130px"></div>
+        <div class="child" style="height:140px"></div>
+        <div class="child" style="height:150px"></div>
+    </div>
+</body>
+
+</html>

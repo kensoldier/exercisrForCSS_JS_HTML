@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        div {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            position: relative;
+            margin: 0 auto;
+            width: 202px;
+            height: 404px;
+            /* 3D效果 */
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .box div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            left: 0;
+            top: 0;
+            opacity: .7;
+        }
+
+        .top {
+            background-color: yellow;
+            z-index: 100;
+            transition: transform 1s ease;
+            /* X軸 50% 代表為X的中心 Y 100%  代表垂直方向的參考點 */
+            transform-origin: 50% 100% 0;
+        }
+
+        .bottom {
+            background-color: brown;
+        }
+
+        .box:hover .top {
+            transform: rotateX(-180deg)
+        }
+        .box-wrap{
+            width: 450px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+            perspective: 1000px
+        }
+        .box-wrap .front, .box-wrap .back{
+            border: 1px solid ;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            opacity: .8;
+            transition: all 1s ease;
+            /* 旋轉到背後要隱藏 */
+            backface-visibility: hidden;
+        }
+        .box-wrap .front{
+            text-align: center;
+            background-color: brown;
+        }
+        .box-wrap .back{
+            text-align: center;
+            background-color: green;
+            /* 如果都是180度的話動畫繪不一致的效果ˋ  要怎麼去  怎麼回來 */
+            transform: rotateY(-180deg);
+        }
+        .box-wrap .front img{
+            width: 200px;
+            height: 200px;
+            border: 2px solid;
+            border-radius: 50%;
+        }
+        .box-wrap:hover .front{
+            transform: rotateY(180deg)
+        }
+        /* 要把原本的去掉 */
+        .box-wrap:hover .back{
+            transform: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="top">
+            top
+        </div>
+        <div class="bottom">
+            bottom
+        </div>
+    </div>
+    <div class="box-wrap">
+        <div class="front">
+            <img src="../img/溫泉風景.jpg" alt="">
+            <h3>xxxxxxx</h3>
+        </div>
+        <div class="back">
+            <h3>OOOOOOOOOOOOOO</h3>
+            <pre>ssssssssssssssss
+                sssssssssssssssssssss
+                sssssssssssssssssssss
+                ssssssssssssssssss
+            </pre>
+        </div>
+    </div>
+
+</body>
+
+</html>

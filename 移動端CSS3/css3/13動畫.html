@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        div {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            margin: 100px auto;
+
+            /* 動畫屬性 */
+            animation-name: rotateA;
+            /*動畫名子*/
+            animation-duration: 2s;
+            /*動畫持續時間*/
+            animation-direction: normal;
+            /*動畫執行方向 reverse可以反轉*/
+            /* animation-delay: 1s ;延遲時間 */
+            /* animation-timing-function: ease;執行的方程式 */
+            animation-iteration-count: infinite;
+            /*循環次數 */
+            /* animation-play-state: 可以到某個狀態 來執行暫停 */
+            /* animation-fill-mode: backwards 結束動畫的狀態 backwards結束後回到最開始的狀態 forwards動畫最後的狀態*/
+            animation-fill-mode: backwards;
+
+        }
+
+        /* @keyframes 相當於一個公共的動畫函數*/
+        @keyframes rotateA {
+            0% {
+                background-color: red;
+            }
+
+            20% {
+                background-color: green
+            }
+
+            50% {
+                background-color: purple;
+                transform: rotate(90deg)
+            }
+
+            /* 80%{background-color:green;transform: rotate(1200deg)} */
+            100% {
+                background-color: blue;
+                transform: rotate(360deg)
+            }
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            margin: 100px auto;
+            /* alternate 來回播放  從左邊到右邊  在從右邊到左邊 */
+            animation: rotateA 2s ease infinite normal;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        111
+    </div>
+    <div class="box2">
+        222
+    </div>
+        <!-- 有動畫庫 Animate.css 可以直接去Link 直接引用-->
+</body>
+
+</html>

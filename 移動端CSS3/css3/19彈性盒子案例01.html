@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*經典的 % +border-box 的布局*/
+        html,
+        body,
+        div,
+        ul,
+        li {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        html,body{
+            background-color: #FFF;
+        }
+        .nav-wrap .nav-list{
+            overflow: hidden;/*觸發BFC*/
+        }
+        .nav-wrap .nav-list .nav-item{
+            width: 20%;
+            float: left;
+            box-sizing: border-box;
+            border: 1px solid;
+        }
+        .nav-wrap .nav-item a{
+            display: block;
+            margin: 0 auto;
+            width: 60px;
+
+        }
+        .nav-wrap .nav-item .nav-img{
+            width: 40px;
+            height: 40px;
+            background-color: aquamarine;
+            opacity: 0.7;
+            border-radius: 50%;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-wrap">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="#">
+                    <div class="nav-img"></div>
+                    <sapn class="nav-text">菜單1</sapn>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
+                    <div class="nav-img"></div>
+                    <sapn class="nav-text">菜單2</sapn>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
+                    <div class="nav-img"></div>
+                    <sapn class="nav-text">菜單3</sapn>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
+                    <div class="nav-img"></div>
+                    <sapn class="nav-text">菜單4</sapn>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
+                    <div class="nav-img"></div>
+                    <sapn class="nav-text">菜單5</sapn>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
+                    <div class="nav-img"></div>
+                    <sapn class="nav-text">菜單6</sapn>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
+                    <div class="nav-img"></div>
+                    <sapn class="nav-text">菜單7</sapn>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
+                    <div class="nav-img"></div>
+                    <sapn class="nav-text">菜單8</sapn>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
+                    <div class="nav-img"></div>
+                    <sapn class="nav-text">菜單9</sapn>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#">
+                    <div class="nav-img"></div>
+                    <sapn class="nav-text">菜單10</sapn>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

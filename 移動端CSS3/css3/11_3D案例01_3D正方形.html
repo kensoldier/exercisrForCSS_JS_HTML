@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    html,body,div{
+        padding: 0;
+        margin: 0;
+    }
+    .cube{
+        position: relative;
+        margin: 200px auto;
+        width: 202px;
+        /* 要增加視距 */
+        /* perspective: 1000px; */
+        /* 顯示3D */
+        transform-style: preserve-3d;
+        transform: rotateX(-10deg) rotateY(20deg)
+    }
+    .cube div{
+        /* border: 1px solid; */
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        left: 0;
+        right: 0;
+        line-height: 200px;
+        text-align: center;
+        opacity: 0.7;
+    }
+    .cube .right{
+        transform: rotateY(90deg) translateZ(100px);
+        background-color: brown;
+    }
+    .cube .left{
+        transform: rotateY(90deg) translateZ(-100px);
+        background-color: red;
+    }
+    .cube .left{
+        transform: rotateX(90deg) translateZ(100px);
+        background-color: blue;
+    }
+    .cube .bottom{
+        transform: rotateX(90deg) translateZ(-100px);
+        background-color: yellow;
+    }
+
+    .cube .back{
+        transform: translateZ(-100px);
+        background-color: purple;
+    }
+    .cube .front{
+        transform: translateZ(100px);
+        background-color: green;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="cube">
+        <div class="top">top</div>
+        <div class="bottom">bottom</div>
+        <div class="right">right</div>
+        <div class="left">left</div>
+        <div class="front">front</div>
+        <div class="back">back</div>
+
+    </div>
+</body>
+</html>

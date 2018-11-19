@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            /* border-image: url() 27(切割) stretch(方式) round(方式) 可以設定成圖片 */
+            /* x軸 Y軸  模糊度  外延(可不寫 默認跟盒子一樣大) */
+            box-shadow: 2px 4px 2px 1px yellow,-2px 8px 2px 1px red;
+            box-sizing: border-box;
+        /* 寬不就是原本的寬督度，不會因為border改變 */
+        }
+        .box2{
+            width: 500px;
+            height: 500px;
+            border: 20px solid;
+            /* 背景現在可以設定多個背景 */
+            background: url('../img/溫泉風景.jpg') no-repeat;
+            /* contain; 會顯示全部圖片 但不會撲滿  cover 才會
+            也可以直接給  X跟Y的比例
+            背影圖示默認重padding開始顯示 要讓他重內容開始顯示  backgroung-origin
+            */
+           background-size: cover;
+           /* content-box 重內容開指顯示  border-box從邊框開 使顯示  也就是參考原點*/
+           background-origin: content-box;
+           /* 可用來裁減 因威如果 border是透明時  可以育才檢 */
+           background-clip: content-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box2"></div>
+</body>
+</html>

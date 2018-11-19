@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body,div,li,ul,h3{
+            padding: 0;
+            margin: 0%;
+        }
+        ul{
+            list-style: none;
+        }
+        h3{
+            font: 16px/1.5
+        }
+        .layer .pro-list-item{
+            float: left;
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            text-align: center;
+            margin:0 10px;
+            /* 可以設定很多不同屬性的過度效果用,隔開就好 */
+            
+        }
+        .layer .pro-list-item img:hover{
+            transition:all 0.6s ease;
+        }
+        .layer .pro-list-item img:hover{
+            transform: translate(10px,0)
+        }
+        .pro-list-item img{
+            width: 80%;
+            height: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="layer">
+        <ul class="pro_list_wrap">
+            <li class="pro-list-item">
+                <a href="javascript:"><img src="../img/溫泉風景.jpg" alt=""></a>
+                <h3>圖片{1}</h3>
+            </li>
+            <li class="pro-list-item">
+                <a href="javascript:"><img src="../img/溫泉風景.jpg" alt=""></a>
+                <h3>圖片{2}</h3>
+            </li>
+            <li class="pro-list-item">
+                <a href="javascript:"><img src="../img/溫泉風景.jpg" alt=""></a>
+                <h3>圖片{3}</h3>
+            </li>
+            <li class="pro-list-item">
+                <a href="javascript:"><img src="../img/溫泉風景.jpg" alt=""></a>
+                <h3>圖片{4}</h3>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

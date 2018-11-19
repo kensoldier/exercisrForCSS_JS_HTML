@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=a, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+[id]{
+    background-color: red;
+}
+[temp]{
+    color: brown;
+}
+/*
+ *表示包含有這個字元的=   
+ [[href^=javas]]  ^表示已什麼開頭  
+ [href$=:0]       $表示已什麼結尾
+  */
+[href*=javas]{   
+    color: purple;
+}
+/* 偽類選擇器 也可fisth-child 等等  */
+/* 可以打倍數進去,注意下面是從1開始算 */
+a:nth-child(3n){  
+    color:red;
+}
+/* 反白得變色 */
+a::selection{
+    background-color: black;
+/* :target 可以用a  對應 到元素的id 它會自動找到目標 可以課已設定多個A  去找到多個P 的位置*/
+p:target{
+    background-color: chartreuse;
+}
+</style>
+</head>
+<body>
+    <a href="#" temp="mds">hello1</a>
+    <a href="#" >hell2</a>
+    <a href="#" >hello3</a>
+    <a href="javascript:0" >hello4</a>
+    <a href="#txt1" id="id1">hello5</a>
+    <p id="txt1">xxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+
+</body>
+</html>

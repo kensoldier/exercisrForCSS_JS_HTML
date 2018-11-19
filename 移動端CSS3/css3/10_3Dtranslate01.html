@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    html,body,div{
+        padding: 0;
+        margin: 0;
+    }
+    .box{
+        width: 200px;
+        height: 200px;
+        border: 1px solid;
+        margin: 100px auto;
+        transition:  transform 0.5s ease;
+    }
+    .box:hover{
+        /* perspective為眼睛跟螢幕的距離 有這個屬性才會讓3D有Z軸的效果  拉近變大
+        也就是用靠近眼睛的效果
+         */
+        transform:perspective(1000px) translate3d(10px, 20px ,200px)
+    }
+
+    /* 3D旋轉 */
+    .box2{
+        width: 200px;
+        height: 200px;
+        border: 1px solid;
+        margin: 100px auto;
+        transition:  all 1s ease;
+        transform:  rotateX(-30deg)  rotateY(60deg)
+    }
+    .box2:hover{
+        transform: rotateX(-30deg)
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+    </div>
+    <div class="box2">
+        </div>
+</body>
+</html>

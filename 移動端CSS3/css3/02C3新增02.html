@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        div {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 {
+            font-size: 40px;
+            height: 200px;
+            background-color: blue;
+            color: red;
+            /* X ，Y的位置  模糊度  且可以給多個 也可以上網找字體效果*/
+            text-shadow: 2px 2px 3px yellow, 2px 2px 3px yellow, 2px 2px 3px red;
+        }
+
+        .box2 {
+            font-size: 40px;
+            height: 200px;
+            background-color: blue;
+            color: red;
+            text-shadow: 2px 2px 3px yellow, 2px 2px 3px yellow, 2px 2px 3px red;
+            width: 300px;
+            /* 要變成...一定要他配overflow: hidden; */
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .box3 {
+            margin: 100px auto;
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            /* 如果不是正方形切出來的形狀會很奇怪 */
+            /* border-radius: 50% */
+            /* 左上 開始順時鐘 */
+            border-radius: 10px 20px 30px 40px;
+        }
+        ul,li{
+            list-style: none;
+        }
+        li{
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            float: left;
+            margin: 10px;
+          
+        }
+        li:first-child{
+            /* 可以設定回一個角 如果有待 / 代表 前面是X軸方方向  後面是水平方向  切腳會變橢圓 */
+            border-radius: 10px 20px 30px 40px / 40px 30px 20px 10px;
+        }
+        li:nth-child(2){
+           border: 20px solid yellowgreen;
+           width: 300px;
+           height: 100px;
+           background-color: aliceblue;
+           border-radius: 100px 25px 50px 50px /50px 25px  50px 25px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">SSSSS</div>
+    <div class="box2">SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS</div>
+    <div class="box3">SSSSS</div>
+    <ul>
+        <li class="test">1</li>
+        <li class="test">2</li>
+        <li class="test">3</li>
+        <li class="test">4</li>
+        <li class="test">5</li>
+        <li class="test">6</li>
+        <li class="test">7</li>
+        <li class="test">8</li>
+        <li class="test">9</li>
+        <li class="test">10</li>
+    </ul>
+</body>
+
+</html>

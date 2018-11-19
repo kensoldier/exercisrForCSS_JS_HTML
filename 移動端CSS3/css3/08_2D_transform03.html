@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       html,body,div,li,ul,h3{
+            padding: 0;
+            margin: 0%;
+        }
+        .box{
+            font: 40px/1.5 "Microsoft YaHei";
+            color: red;
+            font-weight: bolder;
+            text-shadow: 4px 4px 5px rgba(33, 98, 197, 0.5);
+            text-align: center;
+            transition: transform 2s ease;
+            transform: translate(-200px);
+        }
+        .left-fade-in{
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" id="btnFlyin" value="in">
+    <input type="button" id="btnFlyout" value="out">
+    <div class="box">
+        XXXXXXXXXXXXXXX
+    </div>
+    <script>
+    window.onload=function(){
+        var box=document.querySelector('.box');
+        document.querySelector('#btnFlyin').addEventListener('click',function(e){
+            box.className+=' left-fade-in';//注意要有空格 因加進去的時候要注意
+        })
+    }
+    //飛出也是一樣的
+    </script>
+</body>
+</html>
