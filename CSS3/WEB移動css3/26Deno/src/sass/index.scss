@@ -1,0 +1,63 @@
+.container {}
+
+//頭部導航
+.top-hd {
+    display: flex;
+    padding: 0 11px;
+    background: linear-gradient(to right, #900758, #f81c5a);
+    height: 38px;
+
+    //右側logo
+    .logo-wrap {
+        height: 32px;
+        width: 32px;
+        margin-top: 4px;
+        background: url(../img/1508759490-2807984048.jpg);
+        background-size: contain;
+    }
+
+    .srch-wrap {
+        flex: 1;
+        padding: 6px 5px;
+        position: relative;
+        .srch-txt {
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            line-height: 24px;
+            font-size: 12px;
+            border-radius: 24px;
+            background-color: #930F3C;
+            padding-left: 1em;
+            color: #FFF;
+        }
+        input::-webkit-input-placeholder{
+            color: black;
+        }
+        i{
+            position: absolute;
+            right: 10px;
+            top:10px
+        }
+    }
+
+    .msg-wrap {
+        width: 24px;
+        color: #FFF;
+        height: 33px;
+        position: relative;
+
+        i {
+            font-size: 22px;
+            line-height: 22px
+        }
+
+        span {
+            font-size: 12px;
+            line-height: 12px;
+            position: absolute;
+            top: 22px;
+            left: 0;
+        }
+    }
+}
