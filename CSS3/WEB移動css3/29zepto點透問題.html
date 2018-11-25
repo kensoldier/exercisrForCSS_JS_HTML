@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body,
+        div {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+        }
+
+        .cover {
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            background-color: brown
+        }
+
+        .box2 {
+            position: relative
+        }
+
+        .box2::before {
+            content: '  ';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200%;
+            height: 200%;
+            border: 5px solid black;
+            transform: scale(0.5, 0.5);
+            transform-origin: left top;
+            border-left: none;
+            border-right: none;
+            box-sizing: border-box;
+            /* z-index: 10; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div class="cover"></div>
+
+
+    <div class="box2">
+        <img src="../img/溫泉風景.jpg" alt="">
+    </div>
+
+
+    <script src="../js/zepto.js"></script>
+    <script>
+        $(function () {
+            $('.box').on('click', function (e) {
+                console.log('box', e.type, '執行');
+            })
+            $('.cover').on('tap', function (e) {
+                $(this).hide();
+            })
+        }) //但你會發現  你明明只點了cover 而且沒有冒泡 但 下面的box被觸發了 還是因為click會有 200~300ms的延遲4
+        //1.zepto所以移動端的開發 大多會用tap太替click 做好的方法
+        //2.用touchend  也可以去帶 tap 然後阻止默認行為 e.preventDefault 可以阻止後續的click的點透
+        //3.用fastclick 也可以 但有點不好 把原本有的功能去掉
+    </script>
+</body>
+
+</html>

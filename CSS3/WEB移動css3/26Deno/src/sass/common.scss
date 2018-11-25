@@ -1,3 +1,6 @@
+@charset 'utf-8';
+@import '_base.scss';
+
 html, body, div, span, applet, object, iframe, 
 h1, h2, h3, h4, h5, h6, p, 
 blockquote, pre, a, abbr, acronym, address, big, 
@@ -48,4 +51,7 @@ hr {
     background-color: #000; 
     height: 1px 
 }
-
+.layer-sep{
+    height: 10px;
+    background-color:$layer-sep-color;
+}

@@ -57,3 +57,8 @@ hr {
   background-color: #000;
   height: 1px;
 }
+
+.layer-sep {
+  height: 10px;
+  background-color: #eee;
+}

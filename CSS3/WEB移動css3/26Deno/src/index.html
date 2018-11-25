@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,24 +17,188 @@
     <meta name="author" content="sssss.com">
     <!-- 還有關於很多移動端設定 可上網找 不同手機的 -->
     <title>Document</title>
+    <link rel="stylesheet" href="./lib/swipwe/css/swiper.min.css">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./font/font_9uv5djwo71/iconfont.css">
+    <script src="../../../js/rem.js"></script>
+
 </head>
+
 <body>
     <!-- 在移動端時 習慣把所有內容放在 container裡 因為有些瀏覽器 上下滾動時因兼容問題產生-->
     <div class="container">
         <header class="top-hd">
             <div class="logo-wrap"></div>
             <div class="srch-wrap">
-                <input type="text" class="srch-txt" placeholder="搜索">
-                <i class="icon iconfont icon-fangda1"></i>
+                <input type="text" class="srch-txt" placeholder="搜索" id="srchTxt">
+                <i class="icon iconfont icon-fangda1" id="btnSerch"></i>
             </div>
             <div class="msg-wrap">
                 <i class="icon iconfont icon-xiaoxi"></i>
                 <span>消息</span>
             </div>
         </header>
+        <!-- banner -->
+        <div class="scroll-view">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="./img/虎頭埤日落_虎頭埤風景區管理所提供.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="./img/南布袋濕地.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="./img/pic_3279_18.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="./img/南布袋濕地.jpg" alt=""></div>
+                    <div class="swiper-slide"><img src="./img/南布袋濕地.jpg" alt=""></div>
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+
+                <!-- 如果需要滚动条 -->
+                <!-- <div class="swiper-scrollbar"></div> -->
+            </div>
+
+
+
+        </div>
+        <!--導航區 -->
+        <div class="side-nav-wrap">
+            <div class="layer-sep"></div>
+            <ul class="site-nav">
+                <li class="site-nav-item">
+                    <a href="#">
+                        <i class="icon iconfont icon-fangda1"></i>
+                        <p>商品</p>
+                    </a>
+                </li>
+                <li class="site-nav-item">
+                    <a href="#">
+                        <i class="icon iconfont icon-fangda1"></i>
+                        <p>商品</p>
+                    </a>
+                </li>
+                <li class="site-nav-item">
+                    <a href="#">
+                        <i class="icon iconfont icon-fangda1"></i>
+                        <p>商品</p>
+                    </a>
+                </li>
+                <li class="site-nav-item">
+                    <a href="#">
+                        <i class="icon iconfont icon-fangda1"></i>
+                        <p>商品</p>
+                    </a>
+                </li>
+
+            </ul>
+            <div class="layer-sep"></div>
+        </div>
+        <!-- 網站內容層 -->
+        <!-- 秒殺區 -->
+        <div class="layer">
+            <div class="layer-hd">
+                <div class="hd-l">
+                    <div class="hd-title">
+                        <i class="icon iconfont icon-muyingchanpin"></i>
+                        <span>秒殺</span>
+                    </div>
+                    <div class="timer-wrap clearfix" id="mstimer">
+                        <span class="timmer-num">1</span>
+                        <span class="timmer-num">2</span>
+                        <span class="timer-sep">:</span>
+                        <span class="timmer-num">3</span>
+                        <span class="timmer-num">4</span>
+                        <span class="timer-sep">:</span>
+                        <span class="timmer-num">5</span>
+                        <span class="timmer-num">6</span>
+                    </div>
+                </div>
+                <div class="hd-r">
+                    <a href="#">
+                        <span>共多</span>
+                        <i class="icon iconfont icon-muyingchanpin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="layer-bd"></div>
+        </div>
+        <div class="layer-sep"></div>
     </div>
+
+
+    <script src="../../../js/zepto.js"></script>
+    <script src="./lib/swipwe/js/swiper.min.js"></script>
+    <script src="../../../js/common.js"></script>
+    <script>
+        var timer,
+            timerIndex = -1,
+            timerFnArray = [];
+        $(function () {
+            $('#btnSerch').on('tap', function (e) {
+                //第一部 獲取文本框的文本
+                var txt = $('#srchTxt').val() || "DDDD";
+                //頁面跳轉到搜索葉面
+                window.location.href = './srch.html?kw=' + txt
+            })
+            //初始化輪播圖
+            initBannerSwiper();
+
+            timerFnArray.push(updatatimMsTimer); //所以沒隔200毫秒就會去執行 因為已經加入倒主要時鐘==>像是訂閱者
+            //初始化 主要時中時鐘
+            timer = setInterval(function () { //==>像是發布者
+                timerIndex += 1; //為了可以讓其他還樹判斷多少秒後要執行 如果以秒殺為例 時間倒數是1秒 所以只要讓index=5時執行就可以
+                timerIndex = timerIndex % 100;
+              
+                //執行頁面要執行的還數
+                //為什麼要for循環數組 因為 這是初始化時鐘  如果有其他需要用時鐘執行的函數 可以寫到 timerFnArray裡面
+                //然後用timerFnArray[i]()讓他200毫秒偵測執行
+                for (var i = 0; i < timerFnArray.length; i++) {
+                    timerFnArray[i]();
+                    
+                }
+            }, 200)
+        })
+        //跟當前時間差  並加入到頁面中的span 然後把它下面的function 家在 timerFnArray
+        function updatatimMsTimer() {
+            if (timerIndex % 5 != 0) {
+                return;
+            }
+            //真正開發 會是透過ajax或是 模板
+            var endDate = new Date('2018-11-25 23:42:23')
+            var strArr = getHouseMinuteSecondByMs(endDate - Date.now());
+            console.log(strArr)
+            $('#mstimer .timmer-num').each(function (index, item) {
+                $(item).text(strArr[index]);
+            })
+        }
+
+        function initBannerSwiper() {
+            //找到選擇器
+            var mySwiper = new Swiper('.swiper-container', {
+                // direction: 'vertical', // 垂直切换选项
+                loop: true, // 循环模式选项
+                autoplay: true,
+                // 如果需要分页器
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+
+                // 如果需要前进后退按钮
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+                // 如果需要滚动条
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                },
+            })
+        }
+    </script>
+
 </body>
+
 </html>

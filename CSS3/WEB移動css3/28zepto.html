@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/zepto.js"></script>
+    <style>
+        /* zepto的gitgub下載   然後設定你要用的模塊 可以自定義  用powersell進入該資料夾
+        用 npm i =>會自動安裝zepto相關的依賴  會多一個make  他是zepto的編譯文件 
+        找到  modules = (env['MODULES'] || 'zepto event ajax form ie').split(' ')
+        可以在後面新增你要的模塊 fx fx_methods touch +三個 當然也有很多可以加載 
+         然後npm run dist 他會進行打包 到dist 就會有訂製的 js
+        */
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box"></div>
+
+   
+    <script>
+    
+    $(function(){
+        $('.box').on('tap longTap',function(e){//考以一次綁定多個事件 用法跟jquery一樣  $()=>ready事件
+            console.log(e.type)
+        })
+    })
+    $(function(){
+        $('.box').on('swipe swipeUp swipeDown swipeRight',function(e){//考以一次綁定多個事件 用法跟jquery一樣  $()=>ready事件
+            console.log(e.type)
+        })
+    })
+    </script>
+</body>
+
+</html>

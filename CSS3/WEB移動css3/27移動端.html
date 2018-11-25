@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    /* 在手機因為沒有連續點擊事件 改成兩隻收可以放大縮小的事件  所以cilck會有200~300ms的延遲 
+    為了檢測是否是兩隻手來放大螢幕
+    移動端瀏覽器 會有touch事件
+    1.touchstart: 
+    2.touchmove:
+    3.touchend:
+    4.touchcancel: 如果訊息或電話進來 會中斷touch事件
+    touchstart=>touchend=>click 基本上 有click就會有touch 但有touch不一定會有 click
+    // touch 和click 不要同時用 會有問題 造成點擊穿透問題
+     */
+     .box{
+         width: 200px;
+         height: 200px;
+         border: 1px solid;
+     }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+<script>
+window.onload=function(){
+var touch =document.querySelector('.box');
+touch.addEventListener('click',function(e){
+    console.log('click');
+})
+touch.addEventListener('touchstart',function(e){
+    console.log('touchstart');
+});
+touch.addEventListener('touchmove',function(e){
+    console.log('touchmove');
+    // 會多次觸發  不要做大量計算  只做狀態紀錄  其他動作  寫在其他function裡面
+    // e.target.tagName
+    //touchEvent =>  裡面有很多訊息
+    //touch事件會監聽  每一根手指放上去她都會觸發 touchstart
+    console.log(e.target)
+});
+touch.addEventListener('touchend',function(e){
+    console.log('touchecd');
+});
+//觸摸手勢相關的框架 跟 事件  tap swipe事件類 是基於原生地touch事件 封裝的不同手勢
+//tap事件  目前還不知道 與touch的差別  一般用於代替click
+//tap 手指觸碰一下
+//longTap 長時間觸碰
+//singleTap  手指觸碰一下
+//doubleTap     手指霜及螢幕
+
+//swipe 手指在螢幕滑動時觸發
+//swipeLeft
+//swipeTop
+//swipeRight
+//swipeDown
+
+//zepto  是一個js庫 封裝很多手勢 兼容jquery 也就是jquery怎麼用  zepto就怎麼用
+//hammer.js 也是一個豐富的手勢庫
+
+}
+</script>
+</body>
+</html>
