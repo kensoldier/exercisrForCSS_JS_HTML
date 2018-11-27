@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="./pjax.js"></script> -->
+    <style>
+        .wrap {
+            width: 200px;
+            height: 200px;
+            border: 1px solid;
+            position: absolute;
+            top: 30%;
+            left: 30%;
+        }
+
+        #result {
+            width: 150px;
+            height: 150px;
+            border: 1px solid;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <a href="./test01.html" id="aa">SSS</a>
+        <div id="result">
+
+        </div>
+    </div>
+    <script>
+      
+
+
+        var box = document.querySelector('#aa');
+        var result = document.querySelector('#result');
+        box.addEventListener('click', function (e) {
+            var url = box.getAttribute('href');
+            e.preventDefault();
+            var xhr = new XMLHttpRequest();
+            //console.log(xhr);
+            xhr.open("GET", url, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status == 200) {
+                    var html = xhr.responseText;
+                    console.log(html);
+                    result.innerHTML=html;
+                }
+            }
+            xhr.send();
+        })
+        /*
+        
+        
+        
+        */
+    </script>
+</body>
+
+</html>
