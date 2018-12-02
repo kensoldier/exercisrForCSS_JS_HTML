@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  /* background-color: green;不會有有變化 不是因為衝突  而是因為 APP.CSS更接近  所以被覆蓋的 */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
