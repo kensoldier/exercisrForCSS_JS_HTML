@@ -49,7 +49,13 @@ class App extends Component {
     const doseShow=this.state.showPerson;
     this.setState({  showPerson:!doseShow})
   }
-  
+  deletePersonHandler=(personIndex)=>{
+    const persons=this.state.persons;
+    persons.splice(personIndex,1);
+    this.setState({persons:persons})
+  }
+
+
   /* 
   *state 用於改變組件內狀態的值，也就是說 如果要改props的值 要用state
   *props 主要是用來傳值
@@ -67,6 +73,7 @@ class App extends Component {
             {
               this.state.persons.map((person,index)=>{
                 return<Person
+                myclick={()=>this.deletePersonHandler(index)}
                 key={index} 
                 name={person.name} 
                 weight={person.weight}/>

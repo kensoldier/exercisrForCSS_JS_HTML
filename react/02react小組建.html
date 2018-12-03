@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'></div>
+    <script type="text/babel">
+        class Leo extends React.Component{    //使用Component 要讓 class繼承 React.Component  然後一定要大寫開頭
+            constructor(){
+                super();
+            }
+         
+         
+            show(){
+                // this.props.a  會出錯  因為this 只項改變了
+                //用bind  函數不會直接調用  且會綁在當前的目標
+                // this.props.a=50  不會改變  因為 props是只讀的  所以要改用狀態 state
+                this.props.a=50;
+                console.log(this);
+                                
+            }
+            render(){
+                return (<div>
+                           <p>hello world {this.props.a}</p>   
+                           <input type="button" value="check" onClick={this.show.bind(this)}/> {/*this 指向組件*/}       
+                        </div>)
+            }
+        }
+        ReactDOM.render(<Leo a="9" />,document.getElementById("app") )  //標籤裡的的屬性就是參數  而且可以透過 props傳遞
+    </script>
+
+
+
+    <script src="https://cdn.bootcss.com/react/16.6.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.6.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/7.0.0-beta.3/babel.js"></script>
+</body>
+</html>

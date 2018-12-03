@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'></div>
+    <script type="text/babel">
+        class Leo extends React.Component{    //使用Component 要讓 class繼承 React.Component  然後一定要大寫開頭
+            constructor(){
+                super();
+                this.state={
+                    msg:'hello '
+                }
+            }
+            show(){
+                // this.state.msg='change'  這樣也是無法改的  因為 Json 改變數據他不會進行渲染
+                this.setState({
+                    msg:"change"
+                })
+            }
+            render(){
+                return (<div>
+                           <p>{this.state.msg}</p>   
+                           <input type="button" value="check" onClick={this.show.bind(this)}/> {/*this 指向組件*/}       
+                        </div>)
+            }
+        }
+        ReactDOM.render(<Leo/>,document.getElementById("app") )  //標籤裡的的屬性就是參數  而且可以透過 props傳遞
+    </script>
+
+
+
+    <script src="https://cdn.bootcss.com/react/16.6.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.6.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/7.0.0-beta.3/babel.js"></script>
+</body>
+</html>

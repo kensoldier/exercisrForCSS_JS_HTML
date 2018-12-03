@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+ 
+</head>
+<body>
+
+        <div id='app'></div>
+    <script type="text/babel">
+       class InputChange extends React.Component{
+            constructor(){
+                super();
+                this.state={
+                msg:''
+               }
+            }
+      
+            changed(e){
+                console.log(this.refs.ddd)//官方提供 ref 找到input 會自己去找到
+                    this.setState({
+                        // msg:e.target.value //拿到div  但都是原生的方法
+                        msg:this.refs.ddd.value
+                    })
+            }
+            render(){
+                return (<div>
+                        <input type="text" onInput={this.changed.bind(this)} ref='ddd'/>
+                        <div>{this.state.msg}</div>
+                       </div>)
+            }
+        }
+        
+        ReactDOM.render(<InputChange />,document.getElementById("app") )  //標籤裡的的屬性就是參數  而且可以透過 props傳遞
+    </script>
+
+    
+ <script src="https://cdn.bootcss.com/react/16.6.0/umd/react.development.js"></script>
+ <script src="https://cdn.bootcss.com/react-dom/16.6.0/umd/react-dom.development.js"></script>
+ <script src="https://cdn.bootcss.com/babel-standalone/7.0.0-beta.3/babel.js"></script>
+        
+</body>
+</html>

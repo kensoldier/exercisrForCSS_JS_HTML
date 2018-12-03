@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div id='app'></div>
+    <script type="text/babel">
+       class Clock extends React.Component{
+            constructor(){
+                super();
+                this.state={
+                    time:new Date()
+                }
+            }
+            setInterval(()=>{
+                this.setState({
+                    time:new Date()
+                })
+            },1000)
+            render(){
+                return (<div>
+                          {this.state.time.toLocaleDateString()}{this.state.time.toLocaleTimeString()}
+                       </div>)
+            }
+        }
+        
+        ReactDOM.render(<Clock/>,document.getElementById("app") )  //標籤裡的的屬性就是參數  而且可以透過 props傳遞
+    </script>
+
+<script src="https://cdn.bootcss.com/react/16.6.0/umd/react.development.js"></script>
+<script src="https://cdn.bootcss.com/react-dom/16.6.0/umd/react-dom.development.js"></script>
+<!-- <script src="https://cdn.bootcss.com/babel-polyfill/7.0.0-rc.4/polyfill.min.js"></script> -->
+<script src="https://cdn.bootcss.com/babel-core/6.1.19/browser.min.js"></script>
+<!-- <script src="https://cdn.bootcss.com/babel-standalone/7.0.0-beta.3/babel.min.js"></script> -->
+</body>
+</html>
