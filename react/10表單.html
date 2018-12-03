@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+ 
+</head>
+<body>
+
+        <div id='app'></div>
+    <script type="text/babel">
+ 
+       class Leo extends React.Component{
+            constructor(){
+                super();
+                this.state={
+                    arr:['台中','台北','台南','屏東']
+            }
+        }
+    
+            render(){
+                return (<div>
+                        <input type="text" defaultValue="ddd" />{/*在 react 裡面分成受控組建 跟非受控組建  如果input +上 value 會變成受控 就不能打字  改成defaultvalue*/}
+                        <input type="checkbox" defaultChecked />  {/*checkbox也是受控的   defaultChecked*/}
+
+                        </div>)
+            }
+        }
+    
+        ReactDOM.render(<Leo />,document.getElementById("app") )  
+    </script>
+        
+ <script src="https://cdn.bootcss.com/react/16.6.0/umd/react.development.js"></script>
+ <script src="https://cdn.bootcss.com/react-dom/16.6.0/umd/react-dom.development.js"></script>
+ <script src="https://cdn.bootcss.com/babel-standalone/7.0.0-beta.3/babel.js"></script>
+        
+</body>
+</html>

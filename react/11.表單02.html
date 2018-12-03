@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+ 
+</head>
+<body>
+
+        <div id='app'></div>
+    <script type="text/babel">
+ 
+       class Leo extends React.Component{
+            constructor(){
+                super();
+                this.state={
+                    arr:[]
+            }
+        }
+        componentWillMount(){
+            //獲取數據 可以寫一個 ajax去獲取數據  或是從後還來
+        }
+
+            render(){
+                let arrLi=[];
+                this.state.arr.forEach((val,index)=>{
+                    arrLi.push(<li key={index}>{val}</li>)  //要給key 因為在虛擬DOM 裡面都是虛擬的原數 為了比對所以要給key
+                })
+                return (<div>
+                            <div style={{display:this.state.arr.length>0?"none":"block"}}>數據加載中</div>
+                            <ul>
+                                {arrLi}
+                            </ul>
+
+                        </div>)
+            }
+        }
+    
+        ReactDOM.render(<Leo />,document.getElementById("app") )  
+    </script>
+        
+ <script src="https://cdn.bootcss.com/react/16.6.0/umd/react.development.js"></script>
+ <script src="https://cdn.bootcss.com/react-dom/16.6.0/umd/react-dom.development.js"></script>
+ <script src="https://cdn.bootcss.com/babel-standalone/7.0.0-beta.3/babel.js"></script>
+        
+</body>
+</html>

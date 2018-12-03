@@ -11,22 +11,45 @@
 
         <div id='app'></div>
     <script type="text/babel">
-       class Drag extends React.Component{
+    //Component  的生命週期  
+    //componentWillMount 組件加載前(渲染前)
+       class Life extends React.Component{
             constructor(){
                 super();
                 this.state={
-        
-            }
-            
-       
-            render(){
-                return (<div >
-                   
-                       </div>)
+                    msg:''
             }
         }
-        
-        ReactDOM.render(<Drag />,document.getElementById("app") )  //標籤裡的的屬性就是參數  而且可以透過 props傳遞
+        componentWillMount(){
+               console.log('before')//如果在掛載前 在執行渲染後的東西 會找不到 但能找到所有的狀態  跟屬性
+           }
+        componentDidMount(){
+               console.log('after')//如果在掛載後
+           }
+        componentWillUpdate(){
+            console.log('before Update')
+        }
+        componentDidUpdate(){
+            console.log('after Update')
+        }
+        componentWilUnMount(){//組件卸載之前
+
+        }
+        show(e){
+            this.setState({  //阻止冒泡 原本的方法都不能用 要用 e.nativeEvent.stopImmediatePropagation()
+
+                msg:"ssss"
+            })
+        }
+            render(){
+                return (<div>
+                            <input value="ckick" type="button" onClick={this.show.bind(this)}/>
+                            <div>{this.state.msg}</div>
+                    </div>)
+            }
+        }
+    
+        ReactDOM.render(<Life />,document.getElementById("app") )  //標籤裡的的屬性就是參數  而且可以透過 props傳遞
     </script>
 
     
