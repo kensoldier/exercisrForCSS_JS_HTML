@@ -16,13 +16,13 @@
             constructor(){
                 super();
                 this.state={
-                    msg:''
+                    msg:'我是子組件數據'
             }
         }
-        componentWillMount(){ //掛載前拿到數據  然後我的子組件是自己的state
-            this.setState({
-                msg:this.props.setMsg
-            })
+        componentWillMount(){
+            console.log(this.props)
+            // this.props.show();  為什麼不能用Show  因為在這裡 已經getMst 去指向show
+            this.props.getMsg(this.state.msg);  //那函數最大的特色是可以傳參數 這樣就把數據給了父組件
         }
             render(){
                 return (<div>                         
@@ -35,21 +35,26 @@
             constructor(){
                 super();
                 this.state={
-                    msg:"i am parent"
+                    msg:''
             }
         }
-        show(){
-            this.setState({//setState本身是重新渲染  所以寫成這樣 父重新渲染 會同不改變
-                msg:'i am change'
+        show(v){
+            // alert(v)
+            // console.log(v)
+            this.setState({
+                msg:v
             })
         }
             render(){
                 return (<div>
-                            <div onClick={this.show.bind(this)}>我是父組件 =>{this.state.msg}</div>
-                            <Child setMsg={this.state.msg}/>
+                            <div>我是父組件=>{this.state.msg}</div>
+                            <Child getMsg={this.show.bind(this)}/> {/*這裡要將bind 不然透過show從子組件傳回來的數據 會指向getMsg*/}
                           
                         </div>)
             }
+            //  <Child fn=父組件的函數.bind(this)>
+            // 在子組件裡面執行涵數  this.props.fn (子主見的數據)
+            //透過父組件裡的函數 接收 子主件數據
         }
     
         ReactDOM.render(<Leo />,document.getElementById("app") )  

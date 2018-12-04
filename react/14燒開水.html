@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+ 
+</head>
+<body>
+
+        <div id='app'></div>
+    <script type="text/babel">
+
+     class  CommentList  extends React.Component{
+            constructor(){
+                super();
+                this.state={
+                  msg:[]
+            }
+        }
+        remove () {
+              this.props.remove(this.props.id);
+         }
+         setUpdate() {
+           this.props.setUpdate(this.props.id);
+        }
+        // componentWillMount(){
+        // this.setState({
+        //   msg:this.props.msgData
+        // })
+            render(){
+             
+                return (
+                  <tr>
+                      <td>{this.props.title}</td>
+                      <td>{this.props.content}</td>
+                      <td>{this.props.time}</td>
+                      <td>
+                          <input type="button" value="X"  onClick={this.remove.bind(this)}/>
+                          <input type="button" value="update"  onClick={this.setUpdate.bind(this)}/>
+                      </td> 
+                      <td>{this.props.id}</td>
+                      
+                </tr>
+                     )
+            }
+        }
+
+        class  CommentApp  extends React.Component{
+            constructor(){
+                super();
+                this.state={
+                  msg:[
+                     ]
+            }
+        }
+        titleOnChange(e){
+          this.setState({
+          titles: e.target.value
+              })
+              // console.log(this.state);
+              
+        }
+        contentOnChange(e){
+          this.setState({
+          contents: e.target.value
+              })
+              // console.log(this.state);
+        }
+        handleSubmit(){
+          const {msg, titles , contents} = this.state;   
+          let newId
+          if(this.state.msg==0){
+            newId=1
+          }else{
+            newId = msg[msg.length-1].id + 1;
+          }  
+          this.setState({
+              title: '',content:'',
+              msg: [
+                ...msg,
+                {id: newId, title: titles, content: contents,time:new Date().toLocaleTimeString() 
+                
+                }
+              ]
+            })
+        }
+        // componentDidUpdate(){
+        //   console.log(this.state);
+        // }
+        removeTodo (id) {
+              // console.log(this.state.msg);
+              const {msg} = this.state;
+              let newTodos = msg.filter((item) => item.id !== id);
+                this.setState({
+                  msg: newTodos 
+                })
+              //  alert(id)
+              }
+        setUpdateTodo(id){
+              console.log(id);
+        }
+            render(){
+              const {msg} = this.state;
+              // console.log(msg)
+
+                return (<div>
+
+                  <form >
+                      <label>
+                          Title:
+                        <input type="text"  onChange={this.titleOnChange.bind(this)} />
+                      </label>
+                      <label>
+                          Content:
+                        <input type="text"   onChange={this.contentOnChange.bind(this)} />
+                      </label>
+                      <input type="button" value="Send" onClick={this.handleSubmit.bind(this)}/>
+                    </form>
+
+                    <table className="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>title</th>
+                                <th>content</th>
+                                <th>time</th>
+                                <th>delete/update</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            {
+                              msg.map((todo) => (
+                                <CommentList id={todo.id} title={todo.title} content={todo.content} time={todo.time}
+                                remove={this.removeTodo.bind(this)}
+                                setUpdate={this.setUpdateTodo.bind(this)}
+                                />
+                              ))
+                            }
+                            </tbody>
+                          </table>
+                     </div>)
+            }
+        }
+        ReactDOM.render(<CommentApp />,document.getElementById("app") )  
+    </script>
+        
+ <script src="https://cdn.bootcss.com/react/16.6.0/umd/react.development.js"></script>
+ <script src="https://cdn.bootcss.com/react-dom/16.6.0/umd/react-dom.development.js"></script>
+ <script src="https://cdn.bootcss.com/babel-standalone/7.0.0-beta.3/babel.js"></script>
+        
+</body>
+</html>
