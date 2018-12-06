@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
- 
+    <style>
+      .update{
+          position: absolute;
+          height: 100px;
+          background: red;
+          left: 30%;
+          top: 20%;
+          padding-top:50px;
+          font-size: 30px;
+      }
+      </style>
 </head>
 <body>
 
@@ -52,7 +62,7 @@
                 super();
                 this.state={
                   msg:[
-                     ]
+                     ],show:"block"
             }
         }
         titleOnChange(e){
@@ -100,7 +110,17 @@
               }
         setUpdateTodo(id){
               console.log(id);
+              const {msg} = this.state;
+              this.setState({
+                    show:this.state.show=="block"?'none':'block'
+                })
+                this.refs.Title.value=msg.find((item)=>item.id===(id)).title;
+                this.refs.Content.value=msg.find((item)=>item.id===(id)).content;
         }
+        updateDate(){
+          alert('ads')
+        }
+     
             render(){
               const {msg} = this.state;
               // console.log(msg)
@@ -119,7 +139,7 @@
                       <input type="button" value="Send" onClick={this.handleSubmit.bind(this)}/>
                     </form>
 
-                    <table className="table table-bordered">
+                    <table >
                             <thead>
                               <tr>
                                 <th>title</th>
@@ -139,6 +159,17 @@
                             }
                             </tbody>
                           </table>
+                          <div className="update" style={{display:this.state.show=='block'?'none':'block'}}>
+                            <label>
+                                update Title:
+                                <input type="text" ref="Title"/>
+                            </label>
+                            <label>
+                              update Content:
+                                <input type="text" ref="Content" />
+                            </label>
+                            <input type="button" value="check OK" onClick={this.updateDate.bind(this)}  />
+                          </div>
                      </div>)
             }
         }

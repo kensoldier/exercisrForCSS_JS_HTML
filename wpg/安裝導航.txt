@@ -1,0 +1,53 @@
+npm init -y 
+
+
+npm i -D webpack@3.8.1 
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "start": "webpack-dev-server ",
+    "dist": "webpack -p"
+  },
+=================================================================
+  "html-webpack-plugin": "2.30.1",
+
+   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'ken', // 默认值：Webpack App
+      filename: 'index.html', // 默认值： 'index.html'
+      template: path.resolve(__dirname, 'src/main.html'),
+      minify: {
+        collapseWhitespace: false,
+        removeComments: true, // 是否移除注释
+        removeAttributeQuotes: true // 移除属性的引号
+      }
+    })
+  ]
+
+   <title><%= htmlWebpackPlugin.options.title %></title>
+   
+   ==============================================================
+   npm i -D css-loader@1.0.0
+   npm i -D style-loader@0.21.0
+    npm i -D sass-loader@7.0.3
+
+   app.js
+   import css from './ddd.css'
+
+   module: {
+		rules: [
+		  {
+			test: /\.(sc|c|sa)ss$/,
+			use: [
+			  'style-loader', {
+				loader: 'css-loader',
+				options: {
+				  sourceMap: true
+				}
+			  }
+			]
+		  }
+		]
+	  },
