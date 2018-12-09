@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .myDiv{
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+    }
+    input.active{
+        background-color: red;
+    }
+    </style>
+</head>
+<body>
+
+        <div id='app'></div>
+    <script type="text/babel">
+              class TopNode extends React.Component{          
+                  indexBtn(i){
+                    this.props.btnInd(i)
+                  }    
+                render(){
+                    // console.log(this.props.topValueArr);
+                    let arrCountry=[]
+                    for(let i=0;i<this.props.topValueArr.length;i++){
+                        arrCountry.push(<input 
+                                            key={i} 
+                                            type="button"  
+                                            value={this.props.topValueArr[i]} 
+                                            className={this.props.myIndex==i?"active":'none'}
+                                            onClick={this.indexBtn.bind(this,i)}
+                                            />)
+                    }
+                    return (<div>
+                            {arrCountry}
+                        </div>)
+                }
+                }
+                class BottomNode extends React.Component{               
+                render(){
+                    let arrDiv=[];
+                    for(let i=0;i<this.props.Json.topValue.length;i++){
+                        arrDiv.push(<div key={i} className="myDiv" style={{display:i==this.props.myIndex?'block':'none'}}>{this.props.Json.bottomValue[i]}</div>)
+                    };
+                    return (<div>
+                          {arrDiv}
+                        </div>)
+                }
+                }
+        class Tab extends React.Component{
+            constructor(){
+                super();
+                this.state={
+                    index:0,
+                    timer:null
+                };
+            };
+            btnOnclick(i){
+                this.setState({
+                    index:i,  
+                })
+            }
+            componentDidMount(){
+                this.autoPlay()        
+            }
+            autoPlay(){
+                clearInterval(this.timer);
+                this.timer=setInterval(() => {
+                    // console.log(1)
+                    let index =this.state.index;
+                    index++;
+                    index==this.props.tabJson.topValue.length  &&(index=0);
+                    this.setState({
+                        index:index
+                    })
+                }, this.props.tabJson.time);
+            }
+            mouseOverStop(){
+                clearInterval(this.timer);
+            }
+            mouseOut(){
+                this.autoPlay()
+            }
+            render(){
+              
+                return (
+                    <div onMouseOver={this.mouseOverStop.bind(this)}  onMouseOut={this.mouseOut.bind(this)}>
+                        <TopNode topValueArr={this.props.tabJson.topValue} 
+                                 myIndex={this.state.index}
+                                 btnInd={this.btnOnclick.bind(this)}
+                        />
+                        <BottomNode Json={this.props.tabJson}
+                                    myIndex={this.state.index}                        
+                        />
+                    </div>
+                    )
+            }
+        }
+     
+        
+        ReactDOM.render(<Tab tabJson={{'topValue':['台灣','義大利','日本'],bottomValue:['good','nice','easy'],'time':1000}}/>,document.getElementById("app") )  
+    </script>
+
+ <script src="https://cdn.bootcss.com/react/16.6.0/umd/react.development.js"></script>
+ <script src="https://cdn.bootcss.com/react-dom/16.6.0/umd/react-dom.development.js"></script>
+ <script src="https://cdn.bootcss.com/babel-standalone/7.0.0-beta.3/babel.js"></script>
+        
+</body>
+</html>

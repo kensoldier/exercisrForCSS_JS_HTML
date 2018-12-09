@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .autoPlay{
+            border: 1px solid;
+            width: 400px;
+            overflow: hidden;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+        }
+        .topDiv{
+          width: 100%;
+          height: 300px;  
+          float: left;
+          position: relative;
+       
+        }
+        .topDiv ul{
+            /* list-style: none; */
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: 0.7s;
+        }
+        .topDiv ul li{
+            width:400px;
+            height: 100%;
+            float: left;
+        }
+        .topDiv ul li img{
+            width: 100%;
+            height: 100%;
+        }
+        .topDiv .rightBtn {
+            position: absolute;
+            top: 50%;
+            right:0;
+            width: 30px;
+            height: 30px;
+            background-color: blanchedalmond;
+            line-height: 30px;
+            transform: translate(0 ,-50%);
+            cursor: pointer;
+        }
+        .topDiv .leftBtn {
+            top:50%;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: blanchedalmond;
+            line-height: 30px;
+            transform: translate(0 ,-50%);
+            cursor: pointer;
+        }
+        .certerBox{
+            width: 100%;
+            height: 20px;
+            float: left;
+            background-color: pink;
+            line-height: 20px;
+        }
+        .certerBox .rightBox{
+            float: right;
+        }
+        .certerBox .rightBox span{
+                cursor: pointer;
+                margin-right: 10px;
+        }
+        .bottomBox{
+            width: 100%;
+            height: 120px;
+            float: left;
+            position: relative
+        }
+        .bottomBox ul{
+            /* width: 100%; */
+            height: 100%;
+            position: absolute;
+            transition: 0.7s;
+        }
+        .bottomBox ul li{
+            width: 100px;
+            height: 120px;
+            float: left;
+            background-size: cover;
+            border: 5px solid black;
+            box-sizing: border-box;
+        }
+        .bottomBox ul li.active{
+            border-color: brown;
+        }
+    </style>
+</head>
+<body>
+
+        <div id='app'></div>
+    <script type="text/babel">
+    let Json={Pic:['./img/1.jpg','./img/2.jpg','./img/3.jpg','./img/4.jpg','./img/5.jpg'],
+              Text:['firstPic','secPic','thrPic','fourPic','fivPic']
+    };
+        class TopNode extends React.Component{
+          
+            render(){
+                let arrLi=[];
+            this.props.ulPic.forEach((val,index)=>{
+                arrLi.push(<li key={index}><img src={val}/></li>)
+            })
+                return (<div className="topDiv">
+                        
+                        <ul style={{width:this.props.ulPic.length*400+'px',left:this.props.index*(-400)+'px'}}>
+                            {arrLi} 
+                           </ul>
+                           <div className="rightBtn" onClick={this.props.rightBtn}>right</div>  
+                           <div className="leftBtn" onClick={this.props.leftBtn}>left</div>
+                        </div>)
+            }
+        }
+        class CenterNode extends React.Component{
+        
+                render(){
+                    return (<div className="certerBox">
+                            <span>{this.props.JsonText[this.props.index]}</span>
+                            <div className='rightBox'>
+                                <span>BIG</span>
+                                <span>SMALL</span> 
+                            </div>
+                            </div>)
+                }
+        }
+        class BottomNode extends React.Component{
+        
+        render(){
+            let arrLi=[];
+            this.props.ulPic.forEach((val,index)=>{//val 在bind裡面 第一個參數為事件對象 可以隨便給只是用來站位的
+                arrLi.push(<li onClick={this.props.Change.bind(val,index)} className={this.props.index==index?'active':'none'} key={index} style={{backgroundImage:'url('+val+')'}}></li>)
+            })
+            return (<div className="bottomBox">
+                        <ul style={{width:this.props.ulPic.length*100+'px' ,left:this.props.index>3?(this.props.index-3)*(-100)+'px':0+'px' }}>
+                            {arrLi} 
+                        </ul>
+                    </div>)
+                }
+        }
+
+
+       class Tab extends React.Component{
+            constructor(){
+                super();
+                this.state={
+                    index:0
+                }
+            }
+            fnGo(v){
+                // console.log(v,u)
+                this.setState({
+                    index:v
+                })
+            }            
+            rightGo(){
+                let rightIndex=this.state.index+1;
+           
+                // console.log(this.props.JsonTo.Pic.length);
+                rightIndex==this.props.JsonTo.Pic.length && (rightIndex=0);
+                this.setState({
+                    index:rightIndex
+                })
+            }
+            leftGo(){
+                let leftIndex=this.state.index-1;
+                leftIndex==-1 && (leftIndex=this.props.JsonTo.Pic.length-1);
+              
+                this.setState({
+                    index:leftIndex
+                })
+            }
+            render(){
+                return (<div className='autoPlay'>
+                       <TopNode ulPic={this.props.JsonTo.Pic} 
+                                index={this.state.index} 
+                                rightBtn={this.rightGo.bind(this)}
+                                leftBtn={this.leftGo.bind(this)}/>
+                       <CenterNode JsonText={this.props.JsonTo.Text} index={this.state.index}/>
+                       <BottomNode ulPic={this.props.JsonTo.Pic} index={this.state.index} Change={this.fnGo.bind(this)}/>   
+                       </div>)
+            }
+        }
+    
+        ReactDOM.render(<Tab JsonTo={Json}/>,document.getElementById("app") )  //標籤裡的的屬性就是參數  而且可以透過 props傳遞
+    </script>
+
+    
+ <script src="https://cdn.bootcss.com/react/16.6.0/umd/react.development.js"></script>
+ <script src="https://cdn.bootcss.com/react-dom/16.6.0/umd/react-dom.development.js"></script>
+ <script src="https://cdn.bootcss.com/babel-standalone/7.0.0-beta.3/babel.js"></script>
+        
+</body>
+</html>
