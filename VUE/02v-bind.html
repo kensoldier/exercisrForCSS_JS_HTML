@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+    #po{
+        color: red;
+    }
+    .act{
+        background-color: blue
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <span>{{name}}</span>
+        <!-- 這樣就可以綁定所以值   :num='num'為簡寫 -->
+        <p v-bind:id='pid' :num='num'>xx</p> 
+        <!-- 樣式綁定  還可以用三元運算-->
+        <p :class="active">xx</p> 
+        <p :class='{act:isActive}'>xx</p> 
+        <!-- 內連樣式 -->
+        <p :style='{backgroundColor:"red"}'>0000</p>
+        <p :style='inLine'>0000</p>
+    </div>
+    
+    <script>
+           //v-bind 屬性綁定
+           new Vue({
+               el:'#app',
+               data:{
+                   name:'ken',
+                   pid:'po',
+                   num:8000,
+                   active:'act',
+                   isActive:true,
+                   inLine:{
+                       display:'block',
+                       backgroundColor:'purple',
+                       height:'200px',
+                       fontSize:'100px',
+                   }
+               }
+           })
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 表單 -->
+    <div id="app">
+        <input type="text" v-model.lazy="name"/>
+        <!-- lazy 為修飾符  代表 焦點離開才會觸發  也有 .number 只能輸入數字 .trim 會自動修改頭尾字符串-->
+        <br/>
+        {{name}}
+        <br/>
+        <textarea name="textName" id="textName" cols="30" rows="10" v-model.number="name"></textarea>
+        <br/>
+        <label for="basketball">Do u like?</label>
+        <input type="checkbox" name="basketball" id="basketball" v-model="basketball">
+        <br/>
+        <label for="basketball">多選</label>
+        1<input type="checkbox" v-model="arr" value="1">
+        2<input type="checkbox" v-model="arr" value="2">
+        3<input type="checkbox" v-model="arr" value="3">
+        {{name}}<input type="checkbox" v-model="arr" :value="name"><br/>
+        {{arr}}
+        <!-- ["1", "2"] 勾1跟2 -->
+        <br/>
+        boy<input type="radio" v-model='gender' value="boy">
+        girl<input type="radio" v-model='gender' value="girl">
+        other<input type="radio" v-model='gender'value='other'> <br/>
+        {{gender}}
+        <h3>select</h3>
+        <select name="" id="" v-model="selectData">
+            <option value="" disabled>請選擇</option>
+            <!-- disabled是為了兼容 ISO 匯了不要觸發 onchange -->
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+        {{selectData}}
+        <br/>
+        <select name="" id="" v-model="multi" multiple>
+                <option value="A">Aa</option>
+                <option value="B">Bb</option>
+                <option value="C">Cc</option>
+            </select>
+        
+    </div>
+    <script>
+   let vm= new Vue({
+        el:'#app',
+        data:{
+            name:'ken',
+            basketball:false,
+            arr:[],
+            gender:'',
+            selectData:'',
+            multi:[]
+        }
+    })
+    </script>
+</body>
+</html>

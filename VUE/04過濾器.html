@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ 
+</head>
+<body>
+    <div id="app">
+      {{name | up}}
+      {{first | toLowCase}}
+      <!-- 屬性也可以用 修飾 -->
+      <p v-bind:id="first | up">000</p>
+    </div>
+    <script>
+        //global filter 這樣所有的 Vue 實例都可以用
+        let vm = Vue.filter('up',function(val){   //vm 指向 Vue 實例 當然 裡面的屬性也是指向裡面  vm.name 如果改變 Vue實例也會改變
+            return val.toUpperCase();
+        })
+           //過濾器
+           new Vue({
+               el:'#app',
+               data:{
+                name:'ken',
+                first:'KKKKK'
+               },
+               filters:{//局部過濾器  filters要加S
+                   toLowCase(val){
+                       return val.toLowerCase();
+                   }
+               }
+           })
+    </script>
+</body>
+</html>

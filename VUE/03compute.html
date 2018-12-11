@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+     <p>{{age}}</p>
+     <p>{{age*2}}</p>
+     <p>{{age**2}}</p>
+     <!--let t= new Date(Date.now()) ==>變成當地邊準時間   // t.getFullYear() t.getMonth+1 月要加1 因為從0開始  t.getDate()日期
+       t.getDay()+1 星期 -->
+       <!-- 如果上面都寫在下面 不是很麻煩嗎   -->
+     <p> year Month date</p>
+     <p>{{getDate}}</p>
+     <p>{{getAge}}</p>
+    </div>
+    
+    <script>
+            new Vue({
+              el:'#app',
+              data:{
+                  age:19,
+                  date:1534058341380
+              },
+              computed:{
+                  getDate(){
+                      let t = new Date(this.date);
+                      let year = t.getFullYear();
+                      let month = t.getMonth()+1;
+                      let date = t.getDate();
+                      return `${year}年${month}月${date}日`
+                  },
+                  getAge(){
+                     return this.age**5
+                  }
+              }
+            })
+    </script>
+</body>
+</html>

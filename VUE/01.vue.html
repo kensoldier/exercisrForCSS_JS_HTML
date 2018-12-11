@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        <hr/>
+        <!-- 還可以用來計算 -->
+        {{message+'dddddddddd==='}}
+        <hr/>
+        <div v-html="description">      
+        </div>
+    </div>
+    
+    <script>
+            new Vue({
+                el:'#app',//element
+                data:{     // 單向的資料綁定  vue 實例  把資料綁在模板上
+                    message:'hi hello<p>這裡是標籤<p/>',  //會過濾掉 轉成字串
+                    description:'<p>這裡是P標籤</p>'  //v-html="description"表示要輸出P標籤
+
+                }
+            })
+    </script>
+</body>
+</html>
