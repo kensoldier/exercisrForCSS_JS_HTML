@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+        <input type="button" @click="componentName=='kk'?componentName='ss':componentName='kk'" value="sent">
+        {{componentName}}
+        <!-- 可以在切換的時候緩存內容 -->
+        <keep-alive>
+            <component :is='componentName'></component>
+        </keep-alive>
+    
+    </div>
+<script>
+    Vue.component('kk',{
+        template:`<div>
+        kk: <input type="text"/>
+        </div>`
+    });
+    Vue.component('ss',{
+        template:`<div>
+        ll: <input type="text"/>
+        </div>`
+    });
+    let vm =new Vue({
+        el:'#app',
+        data:{
+            componentName:'kk'
+        },
+
+    })
+    //在父子組寄件的生命週期
+    /*
+    根組件(beforeCreate()==>created()==>beforeMount)
+    子組件(beforeCreate()==>created()==>beforeMount)
+    根組件(Mounted)
+    子組件(Mounted)
+    掛載完成 才執行 $nextTick(()=>{}.....)
+    */
+</script>
+</body>
+</html>

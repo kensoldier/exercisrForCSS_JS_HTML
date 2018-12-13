@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <log-show log='1' level=2></log-show>
+        <!-- 也可以綁定在 data -->
+        <log-show :log='msg' level=2></log-show>
+        <!-- 注意因為 a要是數字 如果不綁定會把它當成字串 -->
+        <kk-ll :a='30' :b='2'></kk-ll>
+    </div>
+<script>
+    let logShow={
+        props:['log','level'],
+        template:`<p>{{log}}:{{level}}</p>`
+    }
+    //定義一個GLOBAL
+    Vue.component('kk-ll',{
+        props:{
+            a:{
+                required:true,
+                type:Number,
+                validator:function(val){
+                    return val>10
+                }
+            },
+            b:{
+                default:10,//條件
+                type:Number,
+            }
+        },
+        template:`<p>{{b}}---{{a}}</p>`
+    })
+    let vm =new Vue({
+        el:'#app',
+        data:{
+            msg:'kkkeeenn'
+        },
+        components:{
+            'log-show':logShow
+        }
+    })
+</script>
+</body>
+</html>

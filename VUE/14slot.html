@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <lll></lll>
+        <!-- slot就是放在組件中間的預留空間 -->
+        <lll>i am parent <h1>do u watch me</h1></lll>
+
+        <kk>
+            <!-- 就算在組件裡面 {{name}}還是一樣是當前Vue實力的對象 -->
+            <p slot="header">ggggggggggg{{name}}</p>
+            <!-- 要用 name 並且可以嵌套其他組件 -->
+            <lll slot="footer"></lll>
+        </kk>
+    </div>
+<script>
+    // slot 希望把標籤 或者組件傳給 子組件  父組件想給子組件 一些方便的控制
+    Vue.component('lll',{
+        template:`<div>
+                    <p>i am  children</P>
+                    <slot>i am slot</slot>
+                  </div>`
+    })
+
+     let com=Vue.component('kk',{
+        template:`<div>
+        <p>xxxxxxxxxxxxxx</p>
+        <slot name="header">i am header</slot>
+        <hr/>
+        <slot name="footer">i am footer</slot>
+        </div>`
+    })
+    let vm =new Vue({
+        el:'#app',
+        data:{
+            name:'sss'
+        }
+       
+       
+    })
+</script>
+</body>
+</html>
