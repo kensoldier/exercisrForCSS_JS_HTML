@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+   
+    <div id="app">
+            name<input type="text" v-model='name'>
+            age<input type="text" v-model='age'>
+            sex<input type="text" v-model='sex'>
+            <input type="button" v-on:click='sent' value="sent">
+        <table>
+            <thead>
+                <tr>
+                    <td>name</td>
+                    <td>age</td>
+                    <td>sex</td>
+                </tr>
+            </thead>
+            <tbody>
+                <template v-if='user.length>0'>
+                    <tr v-for='(item , index) in user' :key='index'>
+                        <td>{{item.name}}</td>
+                        <td>{{item.age}}</td>
+                        <td>{{item.sex}}</td>
+                    </tr>
+                </template>
+                <template v-else>
+                    NO DATA
+                </template>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                user:[{name:'ken',age:'28',sex:'boy'},{name:'sss',age:'28',sex:'giel'},{name:'kiven',age:'18',sex:'boy'}],
+                name:'',
+                age:'',
+                sex:''
+            },
+            methods:{
+                sent:function(e){
+                    // alert(1)
+                    console.log(e.target)
+                    this.user.push({name:this.name,age:this.age,sex:this.sex})
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

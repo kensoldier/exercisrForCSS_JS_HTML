@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+   <my-component></my-component>
+   <my-component></my-component>
+    </div>
+    
+    <script>
+        //new Vue 的模板就是el 所指向的標籤  但是 Vue.component 裡面沒有el 所以模板就是 template
+        //創建golbal Vue.component('名',{})
+        Vue.component('my-component',{
+            data:function(){
+                return {
+                    age:19,
+                    name:'ken'
+                }
+            },
+            template:`<div>
+            <p>{{age}}</P>
+            <p>{{name}}</P>
+            </div>`
+            // template只能有一個根源素  主要名要小寫，當然不強迫
+        })
+            new Vue({
+              el:'#app',
+              data:{
+              
+              }
+            })
+    </script>
+</body>
+</html>

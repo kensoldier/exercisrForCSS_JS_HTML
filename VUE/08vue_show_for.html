@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- show最大的差別在於他還是存在於HTML節點裡面 只是CSS屬性為NONE 但是 IF else 就是真的存在根不存在 -->
+        <p v-show='ok'>show</p>
+
+        <ul>
+            <li v-for='(item,index) in arr' :key='index'>{{item.msg}} {{index}}</li>
+        </ul>
+        <div>
+        <!--循環對樣時要注意 第2個是KEY   -->
+            <p v-for='(value, key, index) in user' :key="index-1">{{key}}:{{value}}  {{index}}</p>
+        <!--當然 也可以借助 template標籤 -->
+        </div>
+        <!-- 先 for 在 if -->
+        <template>
+            <p v-for='(item,index) in arr2' :key='index' v-if='item%2==0'>{{item}}</p>
+        </template>
+
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                ok:true,
+                arr: [
+                    {msg:'aaa'},
+                    {msg:'bbb'},
+                    {msg:'ccc'}
+                ],
+                user:{age:100,name:'ggg',phone:0955555555,address:'ddddddddd'},
+                arr2:[1,2,3,4,5,6,7,8,9,10]
+            },
+
+
+        })
+    </script>
+</body>
+
+</html>

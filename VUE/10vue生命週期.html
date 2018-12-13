@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-model='msg'>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg: 'ss'
+            },
+            watch: {
+                msg: function (newvalue, oldvalue) { //接受兩個參數
+                    console.log(newvalue);
+                    console.log(oldvalue);
+                },
+
+            },
+            beforeCreate: function () {
+                console.log('beforeCreate...');
+                console.log(this.number)
+            },
+            cteated: function () {
+                console.log('cteated...');
+                console.log(this.number)
+            },
+            beforeMount: function () {
+                console.log('beforeMount...');
+                console.log(this.number)
+            },
+            mounted: function () {
+                console.log('mounted...');
+                console.log(this.number)
+            },
+            beforeUpdate: function () {
+                console.log('beforeUpdate...');
+                console.log(this.number)
+            },
+            updated: function () {
+                console.log('updated...');
+                console.log(this.number)
+            },
+            beforeDestroy: function () {
+                console.log('beforeDestroy...');
+                console.log(this.number)
+            },
+            destroyed: function () {
+                console.log('destroyed...');
+                console.log(this.number)
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>

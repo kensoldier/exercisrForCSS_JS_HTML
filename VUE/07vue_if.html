@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <!-- template 如果要輸出多個標籤 可以用 他只是暫時的標籤  用來包裹 -->
+        <template v-if="ok">
+            <p>cccc</p>
+            <h1>cccccff</h1>
+        </template>
+        <template v-else>
+            <p>cccc</p>
+            <h1>ppppppppp</h1>
+        </template>
+        <h3>優化處理 </h3>
+        <template v-if="A==1">
+            用戶名:<input type="text" placeholder="請輸入用戶名" v-model="name">
+        </template>
+        <template v-else>
+            E-mail:<input type="text" placeholder="請輸入用信箱" v-model="name">
+        </template>
+        <!-- 可以看到切換的時候 輸入框內容不會更新 是因為Vue 會重用 所以不是新生成input 
+        如果不想重用 可以給不同的key值 去避免衝突 -->
+        <input type="button" v-on:click='change' value="send">
+    
+    </div>
+    
+    
+    <script>
+            new Vue({
+                el:'#app',
+                data:{    
+                    ok:false,
+                    A:1,
+                    name:'',
+                },
+                methods:{
+                    change:function(){this.A=!this.A}
+                }
+            })
+    </script>
+</body>
+</html>
