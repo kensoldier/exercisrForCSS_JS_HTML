@@ -13,7 +13,7 @@ import Footer from './views/Home/Footer.vue';
 Vue.use(Router);
 
 //第三步創建路由對象  ==>到main引入
-export default new Router({
+const router= new Router({
   routes: [
     {
       //如果是哈希 path就是在#後面的
@@ -30,7 +30,11 @@ export default new Router({
             footer:Footer
           }
         }
-      ]
+      ],
+    },
+    {
+      path:'*',
+      redirect:'/'
     },
     {
       // 可以接受參數
@@ -56,7 +60,13 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       //下面是一個延遲加載的方式
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+        import(/* webpackChunkName: "about" */ "./views/About.vue"),
+      beforeEnter:(to,from,next)=>{
+        console.log('about-beforeEnter')//組件內也可以寫beforeEnter  
+       
+        next();
+        },
+      
     },
     // 子路由
     {
@@ -76,7 +86,29 @@ export default new Router({
           path:"edit",
           component:EditUser
         }
+        
       ]
     }
-  ]
+  ],
+  mode:"history"//轉換模式 非哈希
 });
+
+
+router.beforeEach((to,from,next)=>{
+console.log('全局路由守衛beforeEach')
+//可以做前端權限較驗
+
+  next();//不調用後續其他鉤子不會繼續執行
+})
+
+router.beforeResolve((to,from,next)=>{
+  console.log('全局路由守衛beforeResolve')
+    next();//也可以給路近 會跳轉過去 但要進行判斷 to.path!=....
+  })
+
+  router.afterEach((to,from)=>{
+    console.log('全局路由守衛afterEach')
+      // next();沒有next 因為已經結束了
+    })  
+
+export default router
