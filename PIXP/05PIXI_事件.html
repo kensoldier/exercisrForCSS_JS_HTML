@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.4/pixi.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let app = new PIXI.Application({
+        width:500,
+        height:500,
+        backgroundColor:0x061639,
+        antialias:true,
+        resolution:true
+    })
+    document.body.appendChild(app.view);
+    //加載圖片除了用loader的方式外還可以用 imagefrom
+    let cat = new PIXI.Sprite(
+        PIXI.Texture.fromImage('./img/哆啦A梦的外观.png')
+        //或者可以用 //PIXI.utils.TextureCache["images/logo.png"
+    );
+    app.stage.addChild(cat)
+    cat.interactive=true //在 互動物件在沒有設定 interactive = true 時不會被感應
+    //但 canvas / WebGL 是畫在 canvas 上的圖像，想想不會被感應到其實比較合理才對
+    cat.buttonMode = true; // 當滑鼠滑過時顯示為手指圖示
+    cat.anchor.set(.5,.5);
+    cat.position.set(100,250);
+    cat.on('pointerdown',()=>{
+       app.ticker.add((delta)=>{
+           cat.x+=1;
+       })
+        
+    })
+
+                /*
+        事件
+        1.鼠標左鍵觸發事件：
+            click：點擊事件
+            mousedown：鼠標按下
+            mousemove：鼠標移動
+            mouseout：鼠標移出
+            mouseover：鼠標經過
+            mouseup：鼠標鬆開
+            mouseupoutside：鼠標按下，移出對象鬆開
+        2.鼠標右鍵觸發事件：
+            rightclick：點擊事件
+            rightdown：鼠標按下
+            rightup：鼠標鬆開
+            rightupoutside：鼠標按下，移出對象鬆開
+        3.觸摸屏觸發事件：
+            touchcancel：觸摸系統cancels鍵
+            touchend：觸摸結束
+            touchendoutside：觸摸開始，移出對象鬆開
+            touchmove：觸摸移動
+            touchstart：觸摸開始
+        4.兼容鼠標和触摸屏的共同觸發：
+            pointercancel：觸發系統cancels鍵
+            pointerdown：觸發按下
+            pointermove：觸發移動
+            pointerout：觸發移出
+            pointerover：觸發經過
+            pointertap：觸發點擊
+            pointerup：觸發鬆開
+        */
+    </script>
+</body>
+</html>

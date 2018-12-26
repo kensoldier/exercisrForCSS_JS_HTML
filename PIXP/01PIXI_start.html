@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.4/pixi.min.js"></script>
+    <title>Document</title>
+    
+</head>
+<body>
+
+    <script>
+        //PIXI可以決定要用什麼渲染引擎 而不是所有瀏覽器都支援 WebGL 所以如果沒有可以用CANVAS代替
+    let type="WebGL"
+    if(!PIXI.utils.isWebGLSupported()){
+        type="canvas"
+    }
+    PIXI.utils.sayHello(type);
+
+    //pixi本身可以提供創建cavas畫布的aip
+
+    let app = new PIXI.Application({
+        width:256,               //default:800
+        height:256,              //default:600
+        backgroundColor:0x061639,//也可後來才改變  app.renderer.backgroundColor=0x061639
+        antialias:true,          //default:false  抗鋸齒  可能因為效能不同 導致 有時候可以會有鋸齒出現 他這裡提供演算法處理
+        transparent:false,       //default:false
+        resolution:1             //default:1  比如Iphone 手機 可能畫面會比其他手機來的好 這時可會導致以些圖片在iphone產生模糊 提供retina 
+        });
+    document.body.appendChild(app.view)
+    // app.renderer.autoResize=true; 也提供rtesize 首先要先打開
+    // app.renderer.resize(900,900)
+    </script>
+</body>
+</html>

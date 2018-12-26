@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.4/pixi.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let app = new PIXI.Application({
+        width:500,
+        height:500,
+        backgroundColor:0x061639,
+        antialias:true,
+        resolution:true
+    })
+    document.body.appendChild(app.view);
+    let cat = new PIXI.Sprite(
+        PIXI.Texture.fromImage('./img/哆啦A梦的外观.png')
+    );
+    app.stage.addChild(cat)
+    cat.interactive=true 
+    cat.buttonMode = true;
+    cat.anchor.set(.5,.5);
+    cat.position.set(100,250);
+    const onDragStart =event=>{
+        // console.log(event.data)
+        // console.log(cat)
+        cat.data = event.data;
+        cat.dragging=true; //把她拖動的屬性設定為true
+    };
+    const onDragEnd = event =>{
+        delete cat.data;
+        cat.dragging = false;
+    };
+    const onDragMove = event => {
+        if(cat.dragging===true){
+            const newPosition = cat.data.getLocalPosition(cat.parent);
+            cat.x = newPosition.x;
+            cat.y = newPosition.y;
+        }
+    } ;
+    cat.on('pointerdown', onDragStart)
+    .on('pointerup',onDragEnd)
+    .on('pointerupoutside', onDragEnd)
+    .on('pointermove', onDragMove)
+
+    app.ticker.add((delta)=>{
+        if(cat.dragging===true){
+            cat.rotation +=  0.1*delta
+        }
+    })
+  
+    </script>
+</body>
+</html>

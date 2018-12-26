@@ -65,8 +65,9 @@ router.beforeEach((to,from,next)=>{
 if(to.path=='/login' || to.path=='/register'){
   next()
 }else{
-   alert('u need to login ');
-   next('/login')
+  //  alert('u need to login ');
+  //  next('/login')
+  next()
 }
 })
 export default router

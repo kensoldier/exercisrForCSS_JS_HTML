@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.4/pixi.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+
+<script>
+let app =new PIXI.Application({
+    width:500,
+    height:500,
+    backgroundColor:0x061639,
+    antialias:true,
+    resolution:1
+})
+document.body.appendChild(app.view)
+//因為PIXI適用webGL和GPU去渲染圖像 ,所以需要把圖像轉成GPU可以處理的版本  
+//==>所以他會使用緩存的方式做成CATCH ==>到時直接可以在WEBGL上使用
+//
+//let texture =PIXI.utils.TextureCache["./img/main.png"]; //先把圖片放在cache 裡面
+//let sprite = new PIXI.Sprite(texture); //然後放到sprite 的物件裡面  這物件本身提供了很多物件方法 包含 X,Y 等等
+
+//加載圖片順序
+    PIXI.loader //可以統一載入圖片 仔入完成之後要編譯我們的圖片
+    // .add('./img/main.png')  //.add可以接收一些callback的方法  載入完成做什麼事情
+    // .add('./img/哆啦A梦的外观.png') 他有提供一個 ARRAY的寫法
+    .add(["./img/main.png","./img/哆啦A梦的外观.png"]) //這裡面也可以設定載入全部後要做什麼事情 
+    //如果要設單個[{"./img/main.png",",onComplete:finction(){}}./img/哆啦A梦的外观.png"] 變成物件用onCompltet
+    .on("progress",loadProgressHandler) //他可以監控我們的加載進程
+    .load(loadOver)//載入完成要做的事情
+
+    function loadProgressHandler(loader , resource){
+        console.log("progress"+ resource.url);//這裡也可以做一些load的動畫之類的
+        console.log("progress"+ loader.progress+"%")
+    }
+    function loadOver(){
+        console.log('load OK');  
+
+        let kid =new PIXI.Sprite(
+            PIXI.loader.resources["./img/main.png"].texture //這也就是當我載入圖片時，我要把圖片的紋理 載入到SPRITE
+        );
+        let cat =new PIXI.Sprite( PIXI.loader.resources["./img/哆啦A梦的外观.png"].texture);
+        app.stage.addChild(kid);//是他本身提供的API 可以把我們的物件丟到 舞台上  就可以圖片操作
+        app.stage.addChild(cat);
+        kid.x=100;  //起始點都是左上角 
+        cat.position.set(200,200)//也可以用這種方式一次設定倆的
+        kid.scale.set(3,1)
+        cat.rotation=90 * (Math.PI / 180);
+        cat.anchor.set(.5,.5)//定錨點
+
+        window.addEventListener('click',()=>{
+            app.stage.removeChild(kid);//從舞台刪除
+            cat.visible = false; //只是把它隱藏
+
+        })
+
+    }
+
+</script>
+</body>
+</html>

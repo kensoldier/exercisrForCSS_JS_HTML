@@ -44,9 +44,10 @@ export default {
                     password:this.password,
                     confirmPassword:this.confirmPassword
                 }
-                axiox.post('/users.json',formData)
+                axiox.post('pizza/member.json',formData)
                 .then(res=>{
-                    console.log(res)
+                    // console.log(res);
+                    this.$router.push({name:'loginLink'})
                 })
             }else{
                 alert('密碼不一致')
